@@ -1,0 +1,122 @@
+div {
+    display: block;
+}
+
+form {
+	display: block;
+	margin: 0cm;
+}
+
+label {
+    cursor: default;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.xh-regbox {
+    max-width: 400px;
+    margin: 20px auto;
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 40px 25px;
+    font-family: "Microsoft Yahei UI","Microsoft Yahei","Helvetica Neue",Helvetica,"Nimbus Sans L",Arial,"Liberation Sans","Hiragino Sans GB","Microsoft YaHei","Wenquanyi Micro Hei","WenQuanYi Zen Hei","ST Heiti",SimHei,"WenQuanYi Zen Hei Sharp",sans-serif;
+    font-size: 0.875em;
+}
+
+
+.xh-regbox .xh-title {
+    text-align: center;
+    font-size: 150%;
+}
+
+.xh-regbox .xh-form {
+    margin-top: 10%;
+}
+
+.xh-regbox *, .xh-regbox *:after, .xh-regbox *:before {
+    box-sizing: border-box;
+}
+
+.xh-regbox .xh-form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.xh-regbox label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+}
+
+.xh-regbox .form-control {
+    width: 100%;
+    height: 35px;
+    padding: 6px 12px;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.xh-regbox input {
+    line-height: normal;
+}
+
+.xh-regbox button, .xh-regbox input, .xh-regbox select, .xh-regbox textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+.xh-regbox .xh-btn-primary, .xh-btn-primary {
+    color: #fff;
+    background-color: #64c320;
+}
+
+.xh-regbox .xh-btn-lg, .xh-btn-lg {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 3px;
+}
+
+.xh-regbox .xh-btn-block {
+    display: block;
+    width: 100%;
+}
+
+.xh-regbox .xh-btn, .xh-btn {
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    line-height: 1.5;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.xh-user-register, .xh-user-register a {
+    color: white;
+}
+
+.xh-user-register {
+    margin: 30px 0 80px;
+    color: #ddd;
+    text-align: center;
+}
