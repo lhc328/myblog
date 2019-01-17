@@ -38,4 +38,13 @@ public class Classify {
     public void setType_fa_id(Integer type_fa_id) {
         this.type_fa_id = type_fa_id;
     }
+
+    @Override
+    public String toString() {
+        return "Classify{" +
+                "type_id=" + type_id +
+                ", type_name='" + type_name + '\'' +
+                ", type_fa_id=" + type_fa_id +
+                '}';
+    }
 }
