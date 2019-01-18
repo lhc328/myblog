@@ -48,7 +48,7 @@
         <li class="layui-nav-item">
           <a href="javascript:;">用户管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="userlist.jsp" target="right">查看用户</a></dd>
+            <dd><a href="/admin/showUser.shtml" target="right">查看用户</a></dd>
             <dd><a href="comments.jsp" target="right">评论管理</a></dd>
           </dl>
         </li>
@@ -81,7 +81,7 @@ layui.use('element', function(){
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "127.0.0.1:8080/blog";
+  hm.src = "127.0.0.1:8080/myblog";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();

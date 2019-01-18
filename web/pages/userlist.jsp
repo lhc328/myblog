@@ -1,4 +1,5 @@
-<%@ page language="java" pageEncoding="utf-8" import="java.io.*,java.util.*"%>
+<%@ page language="java" pageEncoding="utf-8" import="java.io.*,java.util.*,java.lang.*"%>
+<%@ page import="com.myblog.entity.User" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,40 +61,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <input type="checkbox" value="1" name="">
-                        </td>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            小明
-                        </td>
-                        <td>
-                            admin@mail.com
-                        </td>
-                        <td>
-                            2017-01-01 11:11:42
-                        </td>
-                        <td class="td-status">
-                            <span class="layui-btn layui-btn-normal layui-btn-mini">
-                                已启用
-                            </span>
-                        </td>
-                        <td class="td-manage">
-                        	<div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
-                            <button data-method="notice" class="layui-btn">
-                                <i class="layui-icon"></i>
-                            </button>
-                            <button  class="layui-btn">
-                                <a href="//www.baidu.com" style="text-decoration:none">
-                                    <i class="layui-icon"></i>
-                                </a>
-                            </button>
-                        </div>
-                        </td>
-                    </tr>
+                    <%
+                        if(request.getAttribute("userlist") != null){
+                            ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userlist");
+                            for(int i = 0; i < userList.size() ; i++){
+                                out.print("<tr><td><input type='checkbox' value='1' name=''></td><td>"+userList.get(i).getUser_id() + "</td>");
+                                out.print(" <td>" + userList.get(i).getUser_name() + "</td>");
+                                out.print(" <td>" + userList.get(i).getEmail() + "</td>");
+                                out.print(" <td>" + userList.get(i).getReg_time() + "</td>");
+                                String permission = null;
+                                if(userList.get(i).getPermission()==1){
+                                    permission = "管理员";
+                                }else if(userList.get(i).getPermission()==2){
+                                    permission = "普通用户";
+                                }else if(userList.get(i).getPermission()==4){
+                                    permission = "已删除";
+                                }else{
+                                    permission = "错误";
+                                }
+                                out.print("<td class='td-status'> <span class='layui-btn layui-btn-normal layui-btn-mini'>" + permission + "</span></td>");
+                                out.print("<td class='td-manage'> <div class='site-demo-button' id='layerDemo' style='margin-bottom: 0;'> <button data-method='notice' class='layui-btn'> <i class='layui-icon'></i> </button> <button  class='layui-btn'> <a href='//www.baidu.com' style='text-decoration:none'><i class='layui-icon'></i></a></button></div></td></tr>");
+                            }
+                        }
+                    %>
                 </tbody>
             </table>
 	</div>
