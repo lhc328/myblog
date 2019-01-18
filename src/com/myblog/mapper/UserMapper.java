@@ -1,7 +1,7 @@
 package com.myblog.mapper;
 
 import com.myblog.entity.User;
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,8 +19,8 @@ public interface UserMapper {
     //按id查询用户
     User selectUserById(Long user_id);
 
-    //按名字查询用户
-    User selectUserByName(String user_name);
+    //按名字或权限查询用户
+    List<User> selectUserByName(@Param("user_name")String user_name, @Param("permission")Integer permission);
 
     //更改用户信息
     int updateUser(User user);

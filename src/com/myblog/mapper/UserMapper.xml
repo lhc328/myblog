@@ -12,4 +12,16 @@
     <select id="selectUserById" resultType="com.myblog.entity.User" parameterType="java.lang.Long">
         select  <include refid="aUser" /> from  users where user_id = #{user_id,jdbcType=BIGINT}
     </select>
+
+    <select id="selectUserByName" resultType="com.myblog.entity.User">
+        select <include refid="aUser" /> from users
+        <where>
+            <if test="user_name != null">
+                user_name like concat(concat('%',#{user_name}),'%')
+            </if>
+            <if test="permission != 0">
+                and permission = {#permission,jdbcType=INT}
+            </if>
+        </where>
+    </select>
 </mapper>

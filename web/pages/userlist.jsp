@@ -9,16 +9,16 @@
 </head>
 <body>
 	<div class="x-body">
-		<form class="layui-form x-center" action="" style="width:800px">
+		<form class="layui-form x-center" action="/admin/showUserByName.shtml" style="width:800px">
                 <div class="layui-form-pane" style="margin-top: 15px;">
                   <div class="layui-form-item">
                     <label class="layui-form-label">用户名</label>
                     <div class="layui-input-inline">
-                      <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                      <input type="text" name="user_name" placeholder="请输入用户名" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-input-inline">
-                    	<select name="usertype">
-                    		<option value="">所有</option>
+                    	<select name="permission">
+                    		<option value="0">所有</option>
 				            <option value="1">管理员</option>
 				            <option value="2">普通用户</option>
 				            <option value="4">已删除</option>
