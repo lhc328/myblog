@@ -17,15 +17,12 @@
                       <input type="text" name="user_name" placeholder="请输入用户名" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-input-inline">
-                    	<select name="permission">
+                    	<select name="permission" style="display: block">
                     		<option value="0">所有</option>
 				            <option value="1">管理员</option>
 				            <option value="2">普通用户</option>
 				            <option value="4">已删除</option>
 			            </select>
-			            <div class="layui-unselect layui-form-selected">
-			            	<div class="layui-select-title"><input type="text" placeholder="请选择" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div>
-			            </div>
                     </div>
                     <div class="layui-input-inline" style="width:80px">
                         <input class="layui-btn" lay-filter="demo1" type="submit" value="提交查询">
@@ -80,7 +77,7 @@
                                     permission = "错误";
                                 }
                                 out.print("<td class='td-status'> <span class='layui-btn layui-btn-normal layui-btn-mini'>" + permission + "</span></td>");
-                                out.print("<td class='td-manage'> <div class='site-demo-button' id='layerDemo' style='margin-bottom: 0;'> <button data-method='notice' class='layui-btn'> <i class='layui-icon'></i> </button> <button  class='layui-btn'> <a href='//www.baidu.com' style='text-decoration:none'><i class='layui-icon'></i></a></button></div></td></tr>");
+                                out.print("<td class='td-manage'> <div class='site-demo-button' id='layerDemo' style='margin-bottom: 0;'> <button data-method='notice' data-type='" + userList.get(i).getUser_id() + "' class='layui-btn'> <i class='layui-icon'></i> </button> <button  class='layui-btn'> <a href='//www.baidu.com' style='text-decoration:none'><i class='layui-icon'></i></a></button></div></td></tr>");
                             }
                         }
                     %>
@@ -111,7 +108,8 @@ layui.use('layer', function(){ //独立版的layer无需执行这一句
   
   //触发事件
   var active = {
-    notice: function(){
+    notice: function(othis){
+        var uid = othis.data('type')
       //示范一个公告层
       layer.open({
         type: 1
@@ -122,7 +120,7 @@ layui.use('layer', function(){ //独立版的layer无需执行这一句
         ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
         ,btnAlign: 'c'
         ,moveType: 0 //拖拽模式，0或者1
-        ,content: '<div style="text-align:center; font-size:20px; margin: 10px 0">修改信息</div><hr><form class="layui-form" action="" method="post" style="margin-top:30px"><div class="layui-form-item"><label class="layui-form-label">用户ID</label><div class="layui-input-inline"><input type="text" name="userID" lay-verify="required" autocomplete="off" placeholder="请输入用户ID" class="layui-input"></div></div><div class="layui-form-item"><label class="layui-form-label">用户名</label><div class="layui-input-inline"><input type="text" name="username" lay-verify="required" autocomplete="off" placeholder="请输入用户名" class="layui-input"></div></div><div class="layui-form-item"><label class="layui-form-label">密码</label><div class="layui-input-inline"><input type="password" name="password" lay-verify="required" placeholder="请输入密码6-12位" autocomplete="off" class="layui-input"></div></div><div class="layui-form-item"><label class="layui-form-label">邮箱</label><div class="layui-input-inline"><input type="email" name="email" lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input"></div></div><div class="layui-form-item"><div class="layui-input-block"><button class="layui-btn" lay-submit="" lay-filter="demo1">确认修改</button></div></div>'
+        ,content: '<div style="text-align:center; font-size:20px; margin: 10px 0">修改信息</div><hr><form class="layui-form" action="" method="post" style="margin-top:30px"><div class="layui-form-item"><label class="layui-form-label">用户ID</label><div class="layui-input-inline"><input type="text" name="userID" lay-verify="required" autocomplete="off" placeholder=' + uid + ' class="layui-input"></div></div><div class="layui-form-item"><label class="layui-form-label">用户名</label><div class="layui-input-inline"><input type="text" name="username" lay-verify="required" autocomplete="off" placeholder="请输入用户名" class="layui-input"></div></div><div class="layui-form-item"><label class="layui-form-label">密码</label><div class="layui-input-inline"><input type="password" name="password" lay-verify="required" placeholder="请输入密码6-12位" autocomplete="off" class="layui-input"></div></div><div class="layui-form-item"><label class="layui-form-label">邮箱</label><div class="layui-input-inline"><input type="email" name="email" lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input"></div></div><div class="layui-form-item"><label class="layui-form-label">权限</label><div class="layui-input-inline"><select name="permission" style="display: block"><option value="0">不变</option><option value="1">管理员</option><option value="2">普通用户</option><option value="4">已删除</option></select></div></div><div class="layui-form-item"><div class="layui-input-block"><input class="layui-btn" type="submit" lay-filter="demo1" value="确认修改"></div></div>'
       });
     }
   };
