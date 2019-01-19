@@ -36,17 +36,19 @@ public class UserServiceImpl implements UserService {
     public User loginByName(String user_name, String password){
         User user = userMapper.loginByName(user_name);
         System.out.println(user);
-        if(password.equals(user.getPassword())){
-            return user;
-        }else{
-            return null;
+        if(user != null) {
+            if (password.equals(user.getPassword()) && user.getPermission() != 4) {
+                return user;
+            } else {
+                return null;
+            }
         }
+        return null;
     }
 
     //用户注册
     public User insertUser(String user_name, String password, String email){
         User user = userMapper.loginByName(user_name);
-        System.out.println(user);
         if(user != null){
             return null;
         }else{
@@ -55,7 +57,7 @@ public class UserServiceImpl implements UserService {
             user.setPassword(password);
             user.setEmail(email);
             user.setImg_url("bbb");
-            return (userMapper.insertUser(user))!=0?user:null;
+            return (userMapper.insertUser(user))!=0?userMapper.loginByName(user_name):null;
         }
     }
 }
