@@ -1,6 +1,6 @@
 package com.myblog.entity;
 
-public class Artitle {
+public class Article {
     //文章ID,文章标题，发文日期，文章简介，缩略图，文章内容，文章状态，浏览数，评论数，点赞数，用户ID, 用户名
     private Long art_id;
     private String title;
@@ -16,11 +16,11 @@ public class Artitle {
     private String art_username;
 
 
-    public Artitle(){
+    public Article(){
 
     }
 
-    public Artitle(Long art_id, String title, String art_time, String art_info, String art_url, String content, Integer art_permission, Integer art_viewers, Integer art_comments, Integer art_likes, Long art_user_id, String art_username) {
+    public Article(Long art_id, String title, String art_time, String art_info, String art_url, String content, Integer art_permission, Integer art_viewers, Integer art_comments, Integer art_likes, Long art_user_id, String art_username) {
         this.art_id = art_id;
         this.title = title;
         this.art_time = art_time;

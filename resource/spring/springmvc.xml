@@ -27,7 +27,7 @@
     </bean>
 
     <!--文件上传-->
-    <bean id="commonsMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!--配置默认编码-->
         <property name="defaultEncoding" value="utf-8"></property>
         <!--配置文件上传大小-->
