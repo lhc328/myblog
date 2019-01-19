@@ -10,4 +10,10 @@ public interface UserService {
     User selectUserById(Long user_id);
 
     List<User> selectUserByName(String user_name, Integer permission);
+
+    int updateUserById(User user);
+
+    User loginByName(String user_name, String password);
+
+    User insertUser(String user_name, String password, String email);
 }

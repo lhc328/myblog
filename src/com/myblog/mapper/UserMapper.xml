@@ -16,12 +16,39 @@
     <select id="selectUserByName" resultType="com.myblog.entity.User">
         select <include refid="aUser" /> from users
         <where>
-            <if test="user_name != null">
+            <if test="user_name != '' and user_name != null">
                 user_name like concat(concat('%',#{user_name}),'%')
             </if>
             <if test="permission != 0">
-                and permission = {#permission,jdbcType=INT}
+                and permission = #{permission,jdbcType=SMALLINT}
             </if>
         </where>
     </select>
+
+    <select id="loginByName" resultType="com.myblog.entity.User" parameterType="java.lang.String">
+        select <include refid="aUser" /> from users where user_name = #{user_name}
+    </select>
+
+    <update id="updateUserById" parameterType="com.myblog.entity.User">
+        update users
+        <set>
+            <if test="user_name != '' and user_name != null">
+                user_name = #{user_name},
+            </if>
+            <if test="password != '' and password != null">
+                password = #{password},
+            </if>
+            <if test="email != '' and email != null">
+                user_name = #{user_name},
+            </if>
+            <if test="permission != '' and password != null">
+                permission = #{permission, jdbcType=SMALLINT},
+            </if>
+        </set>
+        where user_id = #{user_id}
+    </update>
+
+    <insert id="insertUser" parameterType="com.myblog.entity.User">
+        insert into users (user_name, password, email, img_url) values (#{user_name}, #{password}, #{email}, #{img_url})
+    </insert>
 </mapper>

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" pageEncoding="UTF-8" import="java.io.*,java.util.*" %>
+<%@ page import="com.myblog.entity.User" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +28,8 @@
     <li class="layui-nav-item" style="float:right; margin-right:20%" >
       <%
         if(session.getAttribute("user")!=null){
-          out.print("<a href='javascript:;'><img src='//t.cn/RCzsdCq' class='layui-nav-img'>我</a><dl class='layui-nav-child'><dd><a>个人中心</a></dd><dd><a href='javascript:;'>注销</a></dd></dl>");
+            User user = (User)session.getAttribute("user");
+          out.print("<a href='javascript:;'><img src='//t.cn/RCzsdCq' class='layui-nav-img'>" + user.getUser_name() + "</a><dl class='layui-nav-child'><dd><a>个人中心</a></dd><dd><a href='/logout.shtml'>注销</a></dd></dl>");
         }else{
           out.print("<div class='site-demo-button' id='layerDemo' style='margin-bottom: 0;'><button data-method='notice' class='layui-btn'>登录/注册</button></div>");
         }
@@ -168,7 +170,7 @@
                     ,btn: ['注册', '忘记密码']
                     ,btnAlign: 'c'
                     ,moveType: 0 //拖拽模式，0或者1
-                    ,content: '<div style="text-align:center; font-size:20px; margin: 10px 0">登录</div><hr><form class="layui-form" action="index.jsp" method="post" style="margin-top:30px"><div class="layui-form-item"><label class="layui-form-label">用户名</label><div class="layui-input-inline"><input type="text" name="username" lay-verify="required" autocomplete="off" placeholder="请输入用户名" class="layui-input"></div></div><div class="layui-form-item"><label class="layui-form-label">密码</label><div class="layui-input-inline"><input type="password" name="password" lay-verify="required" placeholder="请输入密码6-12位" autocomplete="off" class="layui-input"></div></div><div class="layui-form-item"><div class="layui-input-block"><button class="layui-btn" lay-submit="" lay-filter="demo1">立即登录</button></div></div><hr style="margin:20px 0 10px 0;">'
+                    ,content: '<div style="text-align:center; font-size:20px; margin: 10px 0">登录</div><hr><form class="layui-form" action="/login.shtml" method="post" style="margin-top:30px"><div class="layui-form-item"><label class="layui-form-label">用户名</label><div class="layui-input-inline"><input type="text" name="user_name" lay-verify="required" autocomplete="off" placeholder="请输入用户名" class="layui-input"></div></div><div class="layui-form-item"><label class="layui-form-label">密码</label><div class="layui-input-inline"><input type="password" name="password" lay-verify="required" placeholder="请输入密码6-12位" autocomplete="off" class="layui-input"></div></div><div class="layui-form-item"><div class="layui-input-block"><input class="layui-btn" lay-filter="demo1" type="submit" value="登录"></div></div><hr style="margin:20px 0 10px 0;">'
                     ,success: function(layero){
                         var btn = layero.find('.layui-layer-btn');
                         btn.find('.layui-layer-btn0').attr({

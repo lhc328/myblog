@@ -7,11 +7,6 @@ import java.util.List;
 
 
 public interface UserMapper {
-    //增加用户
-    int insert(User user);
-
-    //删除用户
-    int deleteByUserId(Long user_id);
 
     //查询所有用户
     List<User> selectAllUser();
@@ -23,6 +18,11 @@ public interface UserMapper {
     List<User> selectUserByName(@Param("user_name")String user_name, @Param("permission")Integer permission);
 
     //更改用户信息
-    int updateUser(User user);
+    int updateUserById(User user);
 
+    //用户名登录
+    User loginByName(String user_name);
+
+    //用户注册
+    int insertUser(User user);
 }

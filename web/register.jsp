@@ -12,11 +12,11 @@
 <body style="background: url(images/register_back.jpg) no-repeat center fixed;">
 	<div class="xh-regbox" style="margin-top: 120px">
 		<div class="xh-title" id="form-title">注册</div>
-	<form  action="" method="post" class="xh-form" >
+	<form  action="/register.shtml" method="post" class="xh-form" >
 		<div class="xh-form-group">
              <label class="required">用户名</label>
              <br>
-             <input type="text" id="register_register_user_login" required="true" name="username" class="form-control">
+             <input type="text" id="register_register_user_login" required="true" name="user_name" class="form-control">
         </div>
         <p></p>
         <div class="xh-form-group">
