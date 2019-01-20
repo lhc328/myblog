@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="utf-8" import="java.io.*,java.util.*"%>
+<%@ page import="com.myblog.entity.Article" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,37 +54,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <input type="checkbox" value="1" name="">
-                        </td>
-                        <td>
-                            博客开发
-                        </td>
-                        <td>
-                            lhc
-                        </td>
-                        <td>
-                            java
-                        </td>
-                        <td>
-                            2017-01-01 11:11:42
-                        </td>
-                        <td class="td-status">
-                            <span class="layui-btn layui-btn-normal layui-btn-mini">
-                                已启用
-                            </span>
-                        </td>
-                        <td class="td-manage">
-                        	
-                                <a href="//www.baidu.com" style="text-decoration:none">
-                                <i class="layui-icon"></i>
-                                </a> 
-                                <a href="//www.baidu.com" style="text-decoration:none">
-                                    <i class="layui-icon"></i>
-                                </a>                        
-                        </td>
-                    </tr>
+                <%
+                    if(request.getAttribute("articlelist") != null) {
+                        ArrayList<Article> articlelist = (ArrayList<Article>)request.getAttribute("articlelist");
+                        for(int i=0;i<articlelist.size();i++) {
+                            out.print("<tr><td><input type = 'checkbox' value = '1' name = '' > </td ><td >" + articlelist.get(i).getArt_title());
+                            out.print("</td ><td >"+articlelist.get(i).getUser_name() +"</td ><td>");
+                            out.print(articlelist.get(i).getArt_type() + "</td><td>");
+                            out.print(articlelist.get(i).getArt_time()+"</td ><td class='td-status' >");
+                            out.print("<span class='layui-btn layui-btn-normal layui-btn-mini'>");
+                            String artMes = "错误信息";
+                            if(articlelist.get(i).getArt_permission() == 1) {
+                                artMes = "待审核";
+                            }else if(articlelist.get(i).getArt_permission() == 2){
+                                artMes = "已通过";
+                            }else if(articlelist.get(i).getArt_permission() == 3){
+                                artMes = "已删除";
+                            }
+                            out.print(artMes+"</span ></td><td class='td-manage'>");
+                            out.print("<a href='//www.baidu.com' style='text-decoration:none'><i class='layui-icon'></i></a>");
+                            out.print("<a href='//www.baidu.com' style='text-decoration:none'> <i class='layui-icon'></i></a></td></tr>");
+                        }
+                    }else{
+                        out.print("<p>找不到资源");
+                    }
+                %>
                 </tbody>
             </table>
 	</div>

@@ -12,8 +12,8 @@ public class Article {
     private Integer art_viewers;
     private Integer art_comments;
     private Integer art_likes;
-    private Long author_id;
-    private String author;
+    private Long user_id;
+    private String user_name;
     private String art_type;
 
 
@@ -21,16 +21,16 @@ public class Article {
 
     }
 
-    public Article(String art_title, String art_info, String art_url, String content, Long author_id, String art_type){
+    public Article(String art_title, String art_info, String art_url, String content, Long user_id, String art_type){
         this.art_title = art_title;
         this.art_info = art_info;
         this.art_url = art_url;
         this.content = content;
-        this.author_id = author_id;
+        this.user_id = user_id;
         this.art_type = art_type;
     }
 
-    public Article(Long art_id, String art_title, String art_time, String art_info, String art_url, String content, Integer art_permission, Integer art_viewers, Integer art_comments, Integer art_likes, Long author_id, String author, String art_type) {
+    public Article(Long art_id, String art_title, String art_time, String art_info, String art_url, String content, Integer art_permission, Integer art_viewers, Integer art_comments, Integer art_likes, Long user_id, String user_name, String art_type) {
         this.art_id = art_id;
         this.art_title = art_title;
         this.art_time = art_time;
@@ -41,8 +41,8 @@ public class Article {
         this.art_viewers = art_viewers;
         this.art_comments = art_comments;
         this.art_likes = art_likes;
-        this.author_id = author_id;
-        this.author = author;
+        this.user_id = user_id;
+        this.user_name = user_name;
         this.art_type = art_type;
     }
 
@@ -54,12 +54,12 @@ public class Article {
         this.art_id = art_id;
     }
 
-    public String getTitle() {
+    public String getArt_title() {
         return art_title;
     }
 
-    public void setTitle(String title) {
-        this.art_title = title;
+    public void setArt_title(String art_title) {
+        this.art_title = art_title;
     }
 
     public String getArt_time() {
@@ -126,20 +126,20 @@ public class Article {
         this.art_likes = art_likes;
     }
 
-    public Long getArt_user_id() {
-        return author_id;
+    public Long getUser_id() {
+        return user_id;
     }
 
-    public void setArt_user_id(Long art_user_id) {
-        this.author_id = art_user_id;
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
-    public String getArt_username() {
-        return author;
+    public String getUser_name() {
+        return user_name;
     }
 
-    public void setArt_username(String art_username) {
-        this.author = art_username;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
     public String getArt_type() {

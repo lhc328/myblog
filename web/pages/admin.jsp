@@ -28,7 +28,14 @@
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
           <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" class="layui-nav-img">
-          <%=((User)session.getAttribute("user")).getUser_name()%>
+          <%
+            if(session.getAttribute("user")!=null) {
+              User user =  (User)session.getAttribute("user");
+              out.print( user.getUser_name() );
+            }else{
+                out.print("admin");
+            }
+          %>
       </li>
       <li class="layui-nav-item"><a href="">退了</a></li>
     </ul>
@@ -41,7 +48,7 @@
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">所有文章</a>
           <dl class="layui-nav-child">
-            <dd><a href="artiles.jsp" target="right">技术文章</a></dd>
+            <dd><a href="/article/showAllArt.shtml" target="right">技术文章</a></dd>
             <dd><a href="diaries.jsp" target="right">日记</a></dd>
              <dd><a href="edit.jsp" target="right">发布文章</a></dd>
           </dl>

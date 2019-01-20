@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.myblog.mapper.ArticleMapper">
+    <sql id="aArticle">
+        art_id, art_title, art_time, art_info, art_url, content, art_permission, art_viewers, art_comments, art_likes, user_id, user_name, art_type
+    </sql>
+
     <insert id="addArticle" parameterType="com.myblog.entity.Article">
-        insert into articles (art_title, art_info, art_url, content, author_id, art_type) values(#{art_title}, #{art_info}, #{art_url}, #{content}, #{author_id}, #{art_type})
+        insert into articles (art_title, art_info, art_url, content, user_id, art_type) values(#{art_title}, #{art_info}, #{art_url}, #{content}, #{user_id}, #{art_type})
     </insert>
+
+    <select id="showArticle" resultType="com.myblog.entity.Article">
+        select <include refid="aArticle"/> from articles natural join users
+    </select>
 </mapper>
