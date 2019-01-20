@@ -8,4 +8,6 @@ public interface ArticleService {
     int addArticle(String art_title, String art_info, String art_url, String content, Long user_id, String art_type);
 
     List<Article> showArticle();
+
+    List<Article> showSomeArticle(String art_title, Integer art_permission, String art_type);
 }

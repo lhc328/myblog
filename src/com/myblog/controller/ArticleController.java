@@ -37,4 +37,13 @@ public class ArticleController {
         model.addAttribute("articlelist", articles);
         return "../pages/artiles.jsp";
     }
+
+    @RequestMapping("/showSomeArt")
+    public String showSomeArticle(String art_title, Integer art_permission, String art_type, Model model){
+        List<Article> articles = new ArrayList<Article>();
+        articles = articleService.showSomeArticle(art_title, art_permission, art_type);
+        System.out.println(articles);
+        model.addAttribute("articlelist", articles);
+        return "../pages/artiles.jsp";
+    }
 }

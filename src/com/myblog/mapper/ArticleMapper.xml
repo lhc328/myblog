@@ -12,4 +12,19 @@
     <select id="showArticle" resultType="com.myblog.entity.Article">
         select <include refid="aArticle"/> from articles natural join users
     </select>
+
+    <select id="showSomeArticle" resultType="com.myblog.entity.Article">
+        select <include refid="aArticle"/> from articles natural join users
+        <where>
+            <if test="art_title != null and art_title != ''">
+                art_title like concat(concat('%',#{art_title}),'%')
+            </if>
+            <if test="art_permission != 0">
+                and art_permission = #{art_permission}
+            </if>
+            <if test="art_type != '' and art_type != null">
+                and art_type = #{art_type}
+            </if>
+        </where>
+    </select>
 </mapper>

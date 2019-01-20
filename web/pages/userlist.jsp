@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="x-body">
-		<form class="layui-form x-center" action="/admin/showUserByName.shtml" style="width:800px">
+		<form class="layui-form x-center" action="/admin/showUserByName.shtml" style="width:800px" method="post">
                 <div class="layui-form-pane" style="margin-top: 15px;">
                   <div class="layui-form-item">
                     <label class="layui-form-label">用户名</label>

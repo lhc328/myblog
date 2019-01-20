@@ -9,16 +9,25 @@
 </head>
 <body>
 	<div class="x-body">
-		<form class="layui-form x-center" action="" style="width:800px">
+		<form class="layui-form x-center" action="/article/showSomeArt.shtml" style="width:800px" method="post">
                 <div class="layui-form-pane" style="margin-top: 15px;">
                   <div class="layui-form-item">
                     <label class="layui-form-label">文章标题</label>
                     <div class="layui-input-inline">
-                      <input type="text" name="title" placeholder="请输入文章标题" autocomplete="off" class="layui-input">
+                      <input type="text" name="art_title" placeholder="请输入文章标题" autocomplete="off" class="layui-input">
                     </div>
                     <label class="layui-form-label">文章分类</label>
                     <div class="layui-input-inline">
-                      <input type="text" name="classes" placeholder="请输入文章类别" autocomplete="off" class="layui-input">
+                      <input type="text" name="art_type" placeholder="请输入文章类别" autocomplete="off" class="layui-input">
+                    </div>
+                    <label class="layui-form-label">文章状态</label>
+                    <div class="layui-input-inline">
+                        <select name="art_permission" style="display: block">
+                            <option value="0">所有</option>
+                            <option value="1">待审核</option>
+                            <option value="2">已通过</option>
+                            <option value="3">已删除</option>
+                        </select>
                     </div>
                     <div class="layui-input-inline" style="width:80px">
                         <input class="layui-btn" lay-filter="demo1" type="submit" value="提交查询">
