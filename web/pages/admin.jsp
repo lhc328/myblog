@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8" import="java.io.*,java.util.*" %>
+<%@ page import="com.myblog.entity.User" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +28,7 @@
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
           <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" class="layui-nav-img">
-          admin
+          <%=((User)session.getAttribute("user")).getUser_name()%>
       </li>
       <li class="layui-nav-item"><a href="">退了</a></li>
     </ul>

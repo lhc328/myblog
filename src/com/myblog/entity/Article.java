@@ -1,9 +1,9 @@
 package com.myblog.entity;
 
 public class Article {
-    //文章ID,文章标题，发文日期，文章简介，缩略图，文章内容，文章状态，浏览数，评论数，点赞数，用户ID, 用户名
+    //文章ID,文章标题，发文日期，文章简介，缩略图，文章内容，文章状态，浏览数，评论数，点赞数，用户ID, 用户名, 分类
     private Long art_id;
-    private String title;
+    private String art_title;
     private String art_time;
     private String art_info;
     private String art_url;
@@ -12,17 +12,27 @@ public class Article {
     private Integer art_viewers;
     private Integer art_comments;
     private Integer art_likes;
-    private Long art_user_id;
-    private String art_username;
+    private Long author_id;
+    private String author;
+    private String art_type;
 
 
     public Article(){
 
     }
 
-    public Article(Long art_id, String title, String art_time, String art_info, String art_url, String content, Integer art_permission, Integer art_viewers, Integer art_comments, Integer art_likes, Long art_user_id, String art_username) {
+    public Article(String art_title, String art_info, String art_url, String content, Long author_id, String art_type){
+        this.art_title = art_title;
+        this.art_info = art_info;
+        this.art_url = art_url;
+        this.content = content;
+        this.author_id = author_id;
+        this.art_type = art_type;
+    }
+
+    public Article(Long art_id, String art_title, String art_time, String art_info, String art_url, String content, Integer art_permission, Integer art_viewers, Integer art_comments, Integer art_likes, Long author_id, String author, String art_type) {
         this.art_id = art_id;
-        this.title = title;
+        this.art_title = art_title;
         this.art_time = art_time;
         this.art_info = art_info;
         this.art_url = art_url;
@@ -31,8 +41,9 @@ public class Article {
         this.art_viewers = art_viewers;
         this.art_comments = art_comments;
         this.art_likes = art_likes;
-        this.art_user_id = art_user_id;
-        this.art_username = art_username;
+        this.author_id = author_id;
+        this.author = author;
+        this.art_type = art_type;
     }
 
     public Long getArt_id() {
@@ -44,11 +55,11 @@ public class Article {
     }
 
     public String getTitle() {
-        return title;
+        return art_title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.art_title = title;
     }
 
     public String getArt_time() {
@@ -116,18 +127,26 @@ public class Article {
     }
 
     public Long getArt_user_id() {
-        return art_user_id;
+        return author_id;
     }
 
     public void setArt_user_id(Long art_user_id) {
-        this.art_user_id = art_user_id;
+        this.author_id = art_user_id;
     }
 
     public String getArt_username() {
-        return art_username;
+        return author;
     }
 
     public void setArt_username(String art_username) {
-        this.art_username = art_username;
+        this.author = art_username;
+    }
+
+    public String getArt_type() {
+        return art_type;
+    }
+
+    public void setArt_type(String art_type) {
+        this.art_type = art_type;
     }
 }

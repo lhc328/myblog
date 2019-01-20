@@ -13,15 +13,16 @@
 
 <div style="margin-left: 80px">
     <textarea id="oriContent" style="height:400px;width:1000px;font-size: 20px; color: #333333" onkeyup="convert()"></textarea>
-    <form action="" method="post">
-	  <input type="text" name="title" placeholder="请输入标题" style="font-size:16px; width:500px; height: 38px; padding-left: 10px">
-      <input id="artile-content" type="text" name="content" hidden="true">
-      <input type="text" name="autor" hidden="true" value="lhc">
-      <input type="text" name="artile-type" placeholder="请输入类别" style="font-size:16px; width:150px; height: 38px; padding-left: 10px">
+    <form action="/article/insertArt.shtml" method="post">
+	  <input type="text" name="art_title" placeholder="请输入标题" style="font-size:16px; width:500px; height: 38px; padding-left: 10px">
+      <input type="text" name="art_info" placeholder="请输入简介" style="font-size:16px; width:500px; height: 38px; padding-left: 10px">
+      <input id="content" type="text" name="content" hidden="true">
+      <input type="text" name="art_type" placeholder="请输入类别" style="font-size:16px; width:150px; height: 38px; padding-left: 10px">
         <div class="layui-upload">
             <button type="button" class="layui-btn layui-btn-normal" id="test8">选择文件</button>
             <button type="button" class="layui-btn" id="test9">开始上传</button>
         </div>
+        <input id="art_url" type="text" name="art_url" hidden="true">
       <input type="submit" value="提交">
     </form>
     <div id="result" style="margin-left: 100px; color: #1f0909; width: 800px"></div>
@@ -35,7 +36,7 @@ function convert(){
     var converter = new showdown.Converter();
     var html = converter.makeHtml(text);
     document.getElementById("result").innerHTML = html;
-    document.getElementById("artile-content").value = html;
+    document.getElementById("content").value = html;
 }
 </script>
 <script src="../layui/layui.js" charset="utf-8"></script>
@@ -58,6 +59,7 @@ function convert(){
             ,bindAction: '#test9'
             ,done: function(res){
                 console.log(res.url)
+                document.getElementById("art_url").value = res.url
             }
         });
 

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.myblog.mapper.ArticleMapper">
-
+    <insert id="addArticle" parameterType="com.myblog.entity.Article">
+        insert into articles (art_title, art_info, art_url, content, author_id, art_type) values(#{art_title}, #{art_info}, #{art_url}, #{content}, #{author_id}, #{art_type})
+    </insert>
 </mapper>
