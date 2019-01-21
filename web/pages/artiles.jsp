@@ -81,8 +81,8 @@
                                 artMes = "已删除";
                             }
                             out.print(artMes+"</span ></td><td class='td-manage'>");
-                            out.print("<a href='//www.baidu.com' style='text-decoration:none'><i class='layui-icon'></i></a>");
-                            out.print("<a href='//www.baidu.com' style='text-decoration:none'> <i class='layui-icon'></i></a></td></tr>");
+                            out.print("<a href='/article/modifyArtPer.shtml?art_id=" + articlelist.get(i).getArt_id() + "&art_permission=2' style='text-decoration:none'><i class='layui-icon'></i></a>");
+                            out.print("<a href='/article/modifyArtPer.shtml?art_id=" + articlelist.get(i).getArt_id() + "&art_permission=3' style='text-decoration:none'> <i class='layui-icon'></i></a></td></tr>");
                         }
                     }else{
                         out.print("<p>找不到资源");

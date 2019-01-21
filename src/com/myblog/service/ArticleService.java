@@ -10,4 +10,6 @@ public interface ArticleService {
     List<Article> showArticle();
 
     List<Article> showSomeArticle(String art_title, Integer art_permission, String art_type);
+
+    int updateArtPer(Long art_id, Integer art_permission);
 }

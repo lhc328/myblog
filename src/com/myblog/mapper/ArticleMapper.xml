@@ -27,4 +27,8 @@
             </if>
         </where>
     </select>
+
+    <update id="updateArtPer" parameterType="Map">
+        update articles set art_permission = #{art_permission} where art_id = #{art_id}
+    </update>
 </mapper>

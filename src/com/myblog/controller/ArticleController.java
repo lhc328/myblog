@@ -46,4 +46,14 @@ public class ArticleController {
         model.addAttribute("articlelist", articles);
         return "../pages/artiles.jsp";
     }
+
+    @RequestMapping("/modifyArtPer")
+    public String modifyArtPermission(Long art_id, Integer art_permission){
+        System.out.println(art_id+"000"+art_permission);
+        if(articleService.updateArtPer(art_id, art_permission) > 0){
+            return "/article/showAllArt.shtml";
+        }else{
+            return "/article/showAllArt.shtml";
+        }
+    }
 }

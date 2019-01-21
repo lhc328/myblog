@@ -6,7 +6,9 @@ import com.myblog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
@@ -24,5 +26,12 @@ public class ArticleServiceImpl implements ArticleService {
 
     public List<Article> showSomeArticle(String art_title, Integer art_permission, String art_type){
         return articleMapper.showSomeArticle(art_title, art_permission, art_type);
+    }
+
+    public int updateArtPer(Long art_id, Integer art_permission){
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("art_id", art_id);
+        map.put("art_permission", art_permission);
+        return articleMapper.updateArtPer(map);
     }
 }
