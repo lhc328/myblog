@@ -52,9 +52,9 @@
           for (int i = 0; i < articles.size(); i++) {
               out.print("<div style='height: 250px; background-color: white;margin: 10px 10px; box-shadow: 0 1px 2px rgba(0,0,0,.1);'>");
               out.print("<div class='layui-col-md3' style='width: 35%;height: 190px;margin: 10px 5px'><div class='grid-demo grid-demo-bg1' >");
-              out.print("<img src='" + articles.get(i).getArt_url() + "'></div></div>");
+              out.print("<img src='" + articles.get(i).getArt_url() + "' style='width:100%'></div></div>");
               out.print("<div class='layui-col-md9' style='width: 60%;height: 190px;margin: 10px 5px 10px 0'><div class='grid-demo grid-demo-bg2'>");
-              out.print("<header> <h2>" + articles.get(i).getArt_title() + "</h2></header><div>");
+              out.print("<header><h2>" + articles.get(i).getArt_title() + "</h2></header><div style='word-wrap:break-word'>");
               out.print(articles.get(i).getArt_info() + " </div> </div> </div><hr>");
               out.print("<div class='layui-col-md12' style='height: 30px'><div class='grid-demo grid-demo-bg3' style='margin-left: 5px;'>");
               out.print("<span> <a style='margin: 0 2px'>" + articles.get(i).getArt_time() + "</a> <a style='margin: 0 2px'>" + articles.get(i).getArt_comments() + "条评论</a> <a style='margin: 0 2px'>" + articles.get(i).getArt_viewers() + " 次阅读</a> <a style='margin: 0 2px'>" + articles.get(i).getArt_likes() + "点赞</a> </span>");

@@ -39,7 +39,7 @@ public class FileUploadController {
         System.out.println(basePath + "\\" + uuid + originalFilename);
         file.transferTo(filePath);
         Map map = new HashMap();
-        map.put("url", basePath + "\\" + uuid + originalFilename);
+        map.put("url", "\\upload\\" + uuid + originalFilename);
         String result = new JSONObject(map).toString();
         return result;
     }
