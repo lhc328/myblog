@@ -56,4 +56,13 @@ public class ArticleController {
             return "/article/showAllArt.shtml";
         }
     }
+
+    //首页
+    @RequestMapping("/index")
+    public String indexDo(Model model){
+        List<Article> articleList = new ArrayList<Article>();
+        articleList = articleService.selectArticle();
+        model.addAttribute("articlelist", articleList);
+        return "../index.jsp";
+    }
 }

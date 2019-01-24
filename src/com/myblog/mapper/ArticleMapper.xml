@@ -13,6 +13,10 @@
         select <include refid="aArticle"/> from articles natural join users
     </select>
 
+    <select id="selectArticle" resultType="com.myblog.entity.Article">
+        select <include refid="aArticle"/> from articles natural join users where art_permission = 2
+    </select>
+
     <select id="showSomeArticle" resultType="com.myblog.entity.Article">
         select <include refid="aArticle"/> from articles natural join users
         <where>

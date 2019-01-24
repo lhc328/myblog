@@ -24,6 +24,8 @@ public class ArticleServiceImpl implements ArticleService {
         return articleMapper.showArticle();
     }
 
+    public List<Article> selectArticle(){return articleMapper.selectArticle(); }
+
     public List<Article> showSomeArticle(String art_title, Integer art_permission, String art_type){
         return articleMapper.showSomeArticle(art_title, art_permission, art_type);
     }

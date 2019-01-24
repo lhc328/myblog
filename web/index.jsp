@@ -7,6 +7,7 @@
 --%>
 <%@ page language="java" pageEncoding="UTF-8" import="java.io.*,java.util.*" %>
 <%@ page import="com.myblog.entity.User" %>
+<%@ page import="com.myblog.entity.Article" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,67 +44,25 @@
 
 <div style="background-color: #f5f5f5">
   <div class="layui-row"  style="width: 60%;margin: 0 auto;padding: 2em 0 2em; ">
-    <div class="layui-col-xs12 layui-col-md8" >
-      <div class="grid-demo grid-demo-bg1">
-        <div style="height: 250px; background-color: white;margin: 10px 10px; box-shadow: 0 1px 2px rgba(0,0,0,.1);">
-          <div class="layui-col-md3" style="width: 35%;height: 190px;margin: 10px 5px">
-            <div class="grid-demo grid-demo-bg1">图片</div>
+      <div class='layui-col-xs12 layui-col-md8' >
+          <div class='grid-demo grid-demo-bg1'>
+    <%
+      if(request.getAttribute("articlelist") != null) {
+          ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("articlelist");
+          for (int i = 0; i < articles.size(); i++) {
+              out.print("<div style='height: 250px; background-color: white;margin: 10px 10px; box-shadow: 0 1px 2px rgba(0,0,0,.1);'>");
+              out.print("<div class='layui-col-md3' style='width: 35%;height: 190px;margin: 10px 5px'><div class='grid-demo grid-demo-bg1' >");
+              out.print("<img src='" + articles.get(i).getArt_url() + "'></div></div>");
+              out.print("<div class='layui-col-md9' style='width: 60%;height: 190px;margin: 10px 5px 10px 0'><div class='grid-demo grid-demo-bg2'>");
+              out.print("<header> <h2>" + articles.get(i).getArt_title() + "</h2></header><div>");
+              out.print(articles.get(i).getArt_info() + " </div> </div> </div><hr>");
+              out.print("<div class='layui-col-md12' style='height: 30px'><div class='grid-demo grid-demo-bg3' style='margin-left: 5px;'>");
+              out.print("<span> <a style='margin: 0 2px'>" + articles.get(i).getArt_time() + "</a> <a style='margin: 0 2px'>" + articles.get(i).getArt_comments() + "条评论</a> <a style='margin: 0 2px'>" + articles.get(i).getArt_viewers() + " 次阅读</a> <a style='margin: 0 2px'>" + articles.get(i).getArt_likes() + "点赞</a> </span>");
+              out.print("<span style='float: right;'><a style='margin-right:15px'>阅读全文</a></span> </div> </div> </div>");
+          }
+      }
+    %>
           </div>
-          <div class="layui-col-md9" style="width: 60%;height: 190px;margin: 10px 5px 10px 0">
-            <div class="grid-demo grid-demo-bg2">
-              <header>
-                <h2>标题</h2>
-              </header>
-              <div>
-                <p>简介
-              </div>
-            </div>
-          </div>
-          <hr>
-          <div class="layui-col-md12" style="height: 30px">
-            <div class="grid-demo grid-demo-bg3" style="margin-left: 5px; ">
-                   	<span>
-                   		<a style="margin: 0 2px">2019年1月9日</a>
-                   		<a style="margin: 0 2px">0条评论</a>
-                   		<a style="margin: 0 2px">217次阅读</a>
-                   		<a style="margin: 0 2px">45人点赞</a>
-                   	</span>
-              <span style="float: right;">
-                   		<a style="margin-right:15px">阅读全文</a>
-                   	</span>
-            </div>
-          </div>
-        </div>
-        <div style="height: 250px; background-color: white;margin: 10px 10px; box-shadow: 0 1px 2px rgba(0,0,0,.1);">
-          <div class="layui-col-md3" style="width: 35%;height: 190px;margin: 10px 5px">
-            <div class="grid-demo grid-demo-bg1">图片</div>
-          </div>
-          <div class="layui-col-md9" style="width: 60%;height: 190px;margin: 10px 5px 10px 0">
-            <div class="grid-demo grid-demo-bg2">
-              <header>
-                <h2>标题</h2>
-              </header>
-              <div>
-                <p>简介
-              </div>
-            </div>
-          </div>
-          <hr>
-          <div class="layui-col-md12" style="height: 30px">
-            <div class="grid-demo grid-demo-bg3" style="margin-left: 5px; ">
-                   	<span>
-                   		<a style="margin: 0 2px">2019年1月9日</a>
-                   		<a style="margin: 0 2px">0条评论</a>
-                   		<a style="margin: 0 2px">217次阅读</a>
-                   		<a style="margin: 0 2px">45人点赞</a>
-                   	</span>
-              <span style="float: right;">
-                   		<a style="margin-right:15px">阅读全文</a>
-                   	</span>
-            </div>
-          </div>
-        </div>
-      </div>
       <div id="demo1" style="margin: 10px 0px 10px 20px;"></div>
     </div>
     <div class="layui-col-xs12 layui-col-md4">

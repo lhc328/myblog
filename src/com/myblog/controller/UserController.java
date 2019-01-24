@@ -1,5 +1,6 @@
 package com.myblog.controller;
 
+import com.myblog.entity.Article;
 import com.myblog.entity.User;
 import com.myblog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserController {
