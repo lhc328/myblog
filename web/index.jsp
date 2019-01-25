@@ -58,7 +58,7 @@
               out.print(articles.get(i).getArt_info() + " </div> </div> </div><hr>");
               out.print("<div class='layui-col-md12' style='height: 30px'><div class='grid-demo grid-demo-bg3' style='margin-left: 5px;'>");
               out.print("<span> <a style='margin: 0 2px'>" + articles.get(i).getArt_time() + "</a> <a style='margin: 0 2px'>" + articles.get(i).getArt_comments() + "条评论</a> <a style='margin: 0 2px'>" + articles.get(i).getArt_viewers() + " 次阅读</a> <a style='margin: 0 2px'>" + articles.get(i).getArt_likes() + "点赞</a> </span>");
-              out.print("<span style='float: right;'><a style='margin-right:15px'>阅读全文</a></span> </div> </div> </div>");
+              out.print("<span style='float: right;'><a href='/article/readArticle.shtml?art_id=" + articles.get(i).getArt_id() + "' style='margin-right:15px'>阅读全文</a></span> </div> </div> </div>");
           }
       }
     %>

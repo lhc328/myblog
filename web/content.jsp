@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8" import="java.io.*,java.util.*" %>
+<%@ page import="com.myblog.entity.Article" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +8,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" href="layui/css/layui.css" media="all">
-  
+  <link rel="stylesheet" href="../layui/css/layui.css" media="all">
 </head>
 <body>
  
@@ -28,9 +28,6 @@
     %>
   </li>
 </ul>
-
-<div style="height: 300px; background-image: url(WEB-INF/images/nav.jpg);background-size: cover;
-    background-position: center center;"></div>
 </header>
 
 <div style="background-color: #f5f5f5">
@@ -38,7 +35,17 @@
     <div class="layui-col-xs12 layui-col-md8" >
       <div class="grid-demo grid-demo-bg1">
         <div id="index-article">
-          <article class="">s</article>
+          <%
+            if(request.getAttribute("article") != null){
+                Article article = (Article)request.getAttribute("article");
+                out.print("<h2>" + article.getArt_title() + "</h2>");
+                out.print("<article class='baidu_pl'>");
+                out.print(article.getContent());
+                out.print("</article>");
+            }else{
+                out.print("<h2>null</h2>");
+            }
+          %>
         </div>
       </div>
     </div>
@@ -60,7 +67,7 @@
 
 
 
-<script src="layui/layui.js" charset="utf-8"></script>
+<script src="../layui/layui.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
 layui.use('element', function(){

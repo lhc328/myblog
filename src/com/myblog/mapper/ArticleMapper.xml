@@ -14,7 +14,7 @@
     </select>
 
     <select id="selectArticle" resultType="com.myblog.entity.Article">
-        select <include refid="aArticle"/> from articles natural join users where art_permission = 2
+        select art_id, art_title, art_time, art_info, art_url, art_viewers, art_comments, art_likes from articles where art_permission = 2
     </select>
 
     <select id="showSomeArticle" resultType="com.myblog.entity.Article">
@@ -30,6 +30,10 @@
                 and art_type = #{art_type}
             </if>
         </where>
+    </select>
+
+    <select id="showArticleById" resultType="com.myblog.entity.Article">
+        select <include refid="aArticle" /> from articles natural join users where art_id = #{art_id}
     </select>
 
     <update id="updateArtPer" parameterType="Map">

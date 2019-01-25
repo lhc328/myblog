@@ -36,4 +36,9 @@ public class ArticleServiceImpl implements ArticleService {
         map.put("art_permission", art_permission);
         return articleMapper.updateArtPer(map);
     }
+
+    //阅读全文
+    public Article showArticleById(Long art_id){
+        return articleMapper.showArticleById(art_id);
+    }
 }

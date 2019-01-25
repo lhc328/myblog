@@ -65,4 +65,16 @@ public class ArticleController {
         model.addAttribute("articlelist", articleList);
         return "../index.jsp";
     }
+
+    @RequestMapping("/readArticle")
+    public String readArticle(Long art_id, Model model){
+        Article article = new Article();
+        article = articleService.showArticleById(art_id);
+        if(article != null){
+            model.addAttribute("article", article);
+            return "../content.jsp";
+        }else{
+            return "../index.jsp";
+        }
+    }
 }

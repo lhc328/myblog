@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="x-body">
-		<form class="layui-form x-center" action="/article/showSomeArt.shtml" style="width:800px" method="post">
+		<form class="layui-form x-center" action="/article/showSomeArt.shtml" style="width:907px" method="post">
                 <div class="layui-form-pane" style="margin-top: 15px;">
                   <div class="layui-form-item">
                     <label class="layui-form-label">文章标题</label>
@@ -20,7 +20,6 @@
                     <div class="layui-input-inline">
                       <input type="text" name="art_type" placeholder="请输入文章类别" autocomplete="off" class="layui-input">
                     </div>
-                    <label class="layui-form-label">文章状态</label>
                     <div class="layui-input-inline">
                         <select name="art_permission" style="display: block">
                             <option value="0">所有</option>
