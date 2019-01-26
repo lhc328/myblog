@@ -16,7 +16,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/layui/css/layui.css"  media="all">
 </head>
 <body>
 
@@ -38,7 +38,7 @@
     </li>
   </ul>
 
-  <div style="height: 300px; background-image: url(images/nav.jpg);background-size: cover;
+  <div style="height: 300px; background-image: url(<%=request.getContextPath()%>/images/nav.jpg);background-size: cover;
     background-position: center center;"></div>
 </header>
 
@@ -82,7 +82,7 @@
 
 
 
-<script src="layui/layui.js" charset="utf-8"></script>
+<script src="<%=request.getContextPath()%>/layui/layui.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
     layui.use('element', function(){
@@ -133,11 +133,11 @@
                     ,success: function(layero){
                         var btn = layero.find('.layui-layer-btn');
                         btn.find('.layui-layer-btn0').attr({
-                            href: 'register.jsp'
+                            href: '<%=request.getContextPath()%>/register.jsp'
                             ,target: '_self'
                         });
                         btn.find('.layui-layer-btn1').attr({
-                            href: 'pages/admin.jsp'
+                            href: '<%=request.getContextPath()%>/pages/admin.jsp'
                             ,target: '_self'
                         });
                     }

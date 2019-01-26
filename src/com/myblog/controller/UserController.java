@@ -1,16 +1,11 @@
 package com.myblog.controller;
 
-import com.myblog.entity.Article;
 import com.myblog.entity.User;
 import com.myblog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class UserController {
@@ -19,20 +14,27 @@ public class UserController {
 
     //登录验证
     @RequestMapping("/login")
-    public String loginController(String user_name, String password, HttpSession session){
+    public String loginController(String user_name, String password, Long art_id, HttpSession session){
         System.out.println(user_name+"00000"+password);
         User user = userService.loginByName(user_name, password);
         if(user != null) {          //为null时不能存进session
             session.setAttribute("user", user);
+            if(art_id != null){
+                System.out.println(art_id);
+                return "redirect:/article/readArticle.shtml?art_id="+art_id;
+            }
         }
-        return "redirect:index.jsp";
+        return "redirect:/article/index.shtml";
     }
 
     //注销登录
     @RequestMapping("/logout")
-    public String logoutServlet(HttpSession session){
+    public String logoutServlet(Long art_id, HttpSession session){
         session.invalidate();
-        return "redirect:index.jsp";
+        if(art_id!=null){
+            return "redirect:/article/readArticle.shtml?art_id="+art_id;
+        }
+        return "redirect:/article/index.shtml";
     }
 
     //注册
@@ -43,7 +45,7 @@ public class UserController {
             return "redirect:register.jsp";
         }else{
             session.setAttribute("user", user);
-            return "redirect:index.jsp";
+            return "redirect:/article/index.shtml";
         }
     }
 }
