@@ -5,7 +5,7 @@
   Time: 19:48
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" pageEncoding="UTF-8" import="java.io.*,java.util.*" %>
+<%@ page language="java" pageEncoding="UTF-8" import="java.lang.*,java.util.*" %>
 <%@ page import="com.myblog.entity.User" %>
 <%@ page import="com.myblog.entity.Article" %>
 <!DOCTYPE html>
@@ -45,25 +45,10 @@
 <div style="background-color: #f5f5f5">
   <div class="layui-row"  style="width: 60%;margin: 0 auto;padding: 2em 0 2em; ">
       <div class='layui-col-xs12 layui-col-md8' >
-          <div class='grid-demo grid-demo-bg1'>
-    <%
-      if(request.getAttribute("articlelist") != null) {
-          ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("articlelist");
-          for (int i = 0; i < articles.size(); i++) {
-              out.print("<div style='height: 250px; background-color: white;margin: 10px 10px; box-shadow: 0 1px 2px rgba(0,0,0,.1);'>");
-              out.print("<div class='layui-col-md3' style='width: 35%;height: 190px;margin: 10px 5px'><div class='grid-demo grid-demo-bg1' >");
-              out.print("<img src='" + articles.get(i).getArt_url() + "' style='width:100%'></div></div>");
-              out.print("<div class='layui-col-md9' style='width: 60%;height: 190px;margin: 10px 5px 10px 0'><div class='grid-demo grid-demo-bg2'>");
-              out.print("<header><h2>" + articles.get(i).getArt_title() + "</h2></header><div style='word-wrap:break-word'>");
-              out.print(articles.get(i).getArt_info() + " </div> </div> </div><hr>");
-              out.print("<div class='layui-col-md12' style='height: 30px'><div class='grid-demo grid-demo-bg3' style='margin-left: 5px;'>");
-              out.print("<span> <a style='margin: 0 2px'>" + articles.get(i).getArt_time() + "</a> <a style='margin: 0 2px'>" + articles.get(i).getArt_comments() + "条评论</a> <a style='margin: 0 2px'>" + articles.get(i).getArt_viewers() + " 次阅读</a> <a style='margin: 0 2px'>" + articles.get(i).getArt_likes() + "点赞</a> </span>");
-              out.print("<span style='float: right;'><a href='/article/readArticle.shtml?art_id=" + articles.get(i).getArt_id() + "' style='margin-right:15px'>阅读全文</a></span> </div> </div> </div>");
-          }
-      }
-    %>
+          <div class='grid-demo grid-demo-bg1' id="art_list">
           </div>
-      <div id="demo1" style="margin: 10px 0px 10px 20px;"></div>
+          <div id="demo1" style="margin: 10px 0 10px 20px;">
+          </div>
     </div>
     <div class="layui-col-xs12 layui-col-md4">
       <div class="grid-demo grid-demo-bg1" style="text-align: center;">
@@ -83,7 +68,59 @@
 
 
 <script src="<%=request.getContextPath()%>/layui/layui.js" charset="utf-8"></script>
-<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script src="<%=request.getContextPath()%>/js/jquery.js" charset="utf-8"></script>
+<script>
+    var curr = 1;
+    var totalCount = 0;
+    var first = true;
+    function getListData() {
+        console.log("pages3:"+totalCount);
+        $.ajax({
+            type: 'POST',
+            url: "/article/index1.shtml",
+            async: false,
+            data: {
+                curr: curr
+            },
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                console.log(data.curr);
+                //first = true;
+                curr = data.curr;
+                totalCount = data.totalCount;
+                console.log("pages:"+totalCount);
+                showList(data.articlelist);
+            }
+        });
+    };
+    getListData();
+    console.log("pages1:"+totalCount);
+    layui.use(['laypage', 'layer'], function () {
+        var laypage = layui.laypage;
+        //总页数大于页码总数
+        laypage.render({
+            elem: 'demo1'
+            , count: totalCount //数据总数
+            , limit: 5
+            , jump: function (obj) {
+                curr = obj.curr;
+                if (!first) {
+                    getListData();
+                }
+                first = false;
+            }
+        });
+    });
+    function showList(data){
+        var row = "";
+        for(var i=0;i<data.length;i++){
+            row = row + "<div style='height: 250px; background-color: white;margin: 10px 10px; box-shadow: 0 1px 2px rgba(0,0,0,.1);'>" + "<div class='layui-col-md3' style='width: 35%;height: 190px;margin: 10px 5px'><div class='grid-demo grid-demo-bg1' >"+"<img src='" + data[i]['art_url'] + "' style='width:100%'></div></div>" + "<div class='layui-col-md9' style='width: 60%;height: 190px;margin: 10px 5px 10px 0'><div class='grid-demo grid-demo-bg2'>" + "<header><h2>" + data[i]['art_title'] + "</h2></header><div style='word-wrap:break-word'>" + data[i]['art_info'] + " </div> </div> </div><hr>" + "<div class='layui-col-md12' style='height: 30px'><div class='grid-demo grid-demo-bg3' style='margin-left: 5px;'>" + "<span> <a style='margin: 0 2px'>" + data[i]['art_time'] + "</a> <a style='margin: 0 2px'>" + data[i]['art_comments'] + "条评论</a> <a style='margin: 0 2px'>" + data[i]['art_viewers'] + " 次阅读</a> <a style='margin: 0 2px'>" + data[i]['art_likes'] + "点赞</a> </span>" + "<span style='float: right;'><a href='/article/readArticle.shtml?art_id=" + data[i]['art_id'] + "' style='margin-right:15px'>阅读全文</a></span> </div> </div> </div>";
+        }
+        $("#art_list").html(row);
+    }
+
+</script>
 <script>
     layui.use('element', function(){
         var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
@@ -92,22 +129,6 @@
         element.on('nav(demo)', function(elem){
             //console.log(elem)
             layer.msg(elem.text());
-        });
-    });
-</script>
-<script>
-    layui.use(['laypage', 'layer'], function(){
-        var laypage = layui.laypage
-            ,layer = layui.layer;
-
-
-        //总页数大于页码总数
-        laypage.render({
-            elem: 'demo1'
-            ,count: 2 //数据总数
-            ,jump: function(obj){
-                console.log(obj)
-            }
         });
     });
 </script>

@@ -24,7 +24,7 @@ public class UserController {
                 return "redirect:/article/readArticle.shtml?art_id="+art_id;
             }
         }
-        return "redirect:/article/index.shtml";
+        return "redirect:/index.jsp";
     }
 
     //注销登录
@@ -34,7 +34,7 @@ public class UserController {
         if(art_id!=null){
             return "redirect:/article/readArticle.shtml?art_id="+art_id;
         }
-        return "redirect:/article/index.shtml";
+        return "redirect:/index.jsp";
     }
 
     //注册
@@ -45,7 +45,7 @@ public class UserController {
             return "redirect:register.jsp";
         }else{
             session.setAttribute("user", user);
-            return "redirect:/article/index.shtml";
+            return "redirect:/index.jsp";
         }
     }
 }

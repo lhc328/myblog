@@ -19,4 +19,8 @@ public interface ArticleMapper {
     int updateArtPer(Map<String, Object> map);
 
     Article showArticleById(Long art_id);
+
+    int getArtCount();
+
+    List<Article> showArtLimit(Map<String,Object> map);
 }

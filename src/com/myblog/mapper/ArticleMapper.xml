@@ -39,4 +39,12 @@
     <update id="updateArtPer" parameterType="Map">
         update articles set art_permission = #{art_permission} where art_id = #{art_id}
     </update>
+
+    <select id="getArtCount" resultType="Integer">
+        select count(*) from articles where art_permission = 2
+    </select>
+
+    <select id="showArtLimit" resultType="com.myblog.entity.Article" parameterType="Map">
+        select art_id, art_title, art_time, art_info, art_url, art_viewers, art_comments, art_likes from articles where art_permission = 2 order by art_id desc limit #{index},#{count};
+    </select>
 </mapper>

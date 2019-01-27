@@ -3,14 +3,19 @@ package com.myblog.controller;
 import com.myblog.entity.Article;
 import com.myblog.entity.User;
 import com.myblog.service.ArticleService;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/article")
@@ -58,12 +63,35 @@ public class ArticleController {
     }
 
     //首页
+    //首页
     @RequestMapping("/index")
     public String indexDo(Model model){
         List<Article> articleList = new ArrayList<Article>();
         articleList = articleService.selectArticle();
         model.addAttribute("articlelist", articleList);
         return "../index.jsp";
+    }
+
+    @RequestMapping("/index1")
+    @ResponseBody
+    public String indexDo(Integer curr){
+        List<Article> articleList = new ArrayList<Article>();
+        articleList = articleService.showArtLimit(curr);
+        System.out.println(curr);
+        int totalCount = articleService.getArtCount();
+        Map map = new HashMap();
+        map.put("articlelist",articleList);
+        map.put("curr",curr);
+        map.put("totalCount",totalCount);
+        String result = new JSONObject(map).toString();
+        return result;
+    }
+
+    //总页数
+    @RequestMapping("/totalPage")
+    public void pageCount(HttpSession session){
+        session.setAttribute("totalPage",articleService.getArtCount());
+        return;
     }
 
     @RequestMapping("/readArticle")

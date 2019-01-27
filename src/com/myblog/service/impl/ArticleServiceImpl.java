@@ -41,4 +41,18 @@ public class ArticleServiceImpl implements ArticleService {
     public Article showArticleById(Long art_id){
         return articleMapper.showArticleById(art_id);
     }
+
+    //返回文章总数量
+    public int getArtCount(){
+        return articleMapper.getArtCount();
+    }
+
+    public List<Article> showArtLimit(int index){
+        Map<String, Object> map = new HashMap<String, Object>();
+        index = (index-1)*5;
+        int count = index+4;
+        map.put("index", index);
+        map.put("count", count);
+        return articleMapper.showArtLimit(map);
+    }
 }

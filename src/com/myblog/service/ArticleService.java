@@ -16,4 +16,8 @@ public interface ArticleService {
     int updateArtPer(Long art_id, Integer art_permission);
 
     Article showArticleById(Long art_id);
+
+    int getArtCount();
+
+    List<Article> showArtLimit(int index);
 }

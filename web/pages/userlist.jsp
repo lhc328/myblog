@@ -86,7 +86,7 @@
 	</div>
 	<div id="demo1" style="margin: 10px 0px 10px 20px;"></div>
 	<script src="../layui/layui.js" charset="utf-8"></script>
-	<script>
+    <script>
 layui.use(['laypage', 'layer'], function(){
   var laypage = layui.laypage
   ,layer = layui.layer;
