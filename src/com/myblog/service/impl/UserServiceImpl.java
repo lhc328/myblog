@@ -6,7 +6,9 @@ import com.myblog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -59,5 +61,26 @@ public class UserServiceImpl implements UserService {
             user.setImg_url("bbb");
             return (userMapper.insertUser(user))!=0?userMapper.loginByName(user_name):null;
         }
+    }
+
+    public List<User> showUserLimit(int page, int limit, String user_name, Integer permission){
+        int index = (page - 1) * limit;
+        Map map = new HashMap();
+        map.put("index", index);
+        map.put("limit", limit);
+        map.put("user_name", user_name);
+        map.put("permission", permission);
+        return userMapper.showUserLimit(map);
+    }
+
+    public int showUserCount(String user_name, Integer permission){
+        Map map = new HashMap();
+        map.put("user_name", user_name);
+        map.put("permission", permission);
+        return userMapper.showUserCount(map);
+    }
+
+    public int deleteUser(Long user_id){
+        return userMapper.deleteUser(user_id);
     }
 }

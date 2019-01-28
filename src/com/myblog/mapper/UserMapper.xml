@@ -51,4 +51,33 @@
     <insert id="insertUser" parameterType="com.myblog.entity.User">
         insert into users (user_name, password, email, img_url) values (#{user_name}, #{password}, #{email}, #{img_url})
     </insert>
+
+    <select id="showUserLimit" parameterType="Map" resultType="com.myblog.entity.User">
+        select <include refid="aUser" /> from users
+        <where>
+            <if test="user_name != '' and user_name != null">
+                user_name like concat(concat('%',#{user_name}),'%')
+            </if>
+            <if test="permission != 0 and permission != null">
+                and permission = #{permission,jdbcType=SMALLINT}
+            </if>
+        </where>
+        limit #{index},#{limit};
+    </select>
+
+    <select id="showUserCount" parameterType="Map" resultType="Integer">
+        select count(*) from users
+        <where>
+            <if test="user_name != '' and user_name != null">
+                user_name like concat(concat('%',#{user_name}),'%')
+            </if>
+            <if test="permission != 0 and permission != null">
+                and permission = #{permission,jdbcType=SMALLINT}
+            </if>
+        </where>
+    </select>
+
+    <update id="deleteUser" parameterType="Long">
+        update users set permission = 4 where user_id = #{user_id}
+    </update>
 </mapper>

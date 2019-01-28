@@ -4,6 +4,7 @@ import com.myblog.entity.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface UserMapper {
@@ -25,4 +26,10 @@ public interface UserMapper {
 
     //用户注册
     int insertUser(User user);
+
+    List<User> showUserLimit(Map map);
+
+    int showUserCount(Map map);
+
+    int deleteUser(Long user_id);
 }

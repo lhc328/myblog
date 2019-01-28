@@ -38,8 +38,7 @@
     </li>
   </ul>
 
-  <div style="height: 300px; background-image: url(<%=request.getContextPath()%>/images/nav.jpg);background-size: cover;
-    background-position: center center;"></div>
+  <div style="height: 300px; background-image: url(<%=request.getContextPath()%>/images/nav.jpg);background-size: cover;  background-position: center center;"></div>
 </header>
 
 <div style="background-color: #f5f5f5">
