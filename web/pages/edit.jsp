@@ -15,13 +15,13 @@
 
 <div style="margin-left: 80px">
     <form action="/article/insertArt.shtml" method="post">
-	  <input type="text" name="art_title" placeholder="请输入标题" style="font-size:16px; width:500px; height: 38px; padding-left: 10px">
-      <input type="text" name="art_info" placeholder="请输入简介" style="font-size:16px; width:500px; height: 38px; padding-left: 10px">
         <div class="editormd" id="my-editormd">
             <textarea class="editormd-markdown-textarea" name="content"></textarea>
             <!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
             <textarea class="editormd-html-textarea" name="content2"></textarea>
         </div>
+        <input type="text" name="art_title" placeholder="请输入标题" style="font-size:16px; width:500px; height: 38px; padding-left: 10px">
+        <input type="text" name="art_info" placeholder="请输入简介" style="font-size:16px; width:500px; height: 38px; padding-left: 10px">
       <input type="text" name="art_type" placeholder="请输入类别" style="font-size:16px; width:150px; height: 38px; padding-left: 10px">
         <div class="layui-upload">
             <button type="button" class="layui-btn layui-btn-normal" id="test8">选择文件</button>

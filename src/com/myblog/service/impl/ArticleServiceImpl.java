@@ -26,8 +26,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     public List<Article> selectArticle(){return articleMapper.selectArticle(); }
 
-    public List<Article> showSomeArticle(String art_title, Integer art_permission, String art_type, int index, int limit){
+    public List<Article> showSomeArticle(String art_title, Integer art_permission, String art_type, int page, int limit){
         Map map = new HashMap();
+        int index = (page-1) * limit;
         map.put("art_title", art_title);
         map.put("art_permission", art_permission);
         map.put("art_type", art_type);

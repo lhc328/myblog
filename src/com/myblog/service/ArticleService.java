@@ -11,7 +11,7 @@ public interface ArticleService {
 
     List<Article> selectArticle();
 
-    List<Article> showSomeArticle(String art_title, Integer art_permission, String art_type, int index, int limit);
+    List<Article> showSomeArticle(String art_title, Integer art_permission, String art_type, int page, int limit);
 
     int updateArtPer(Long art_id, Integer art_permission);
 
