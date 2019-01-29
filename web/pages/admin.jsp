@@ -48,7 +48,7 @@
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">所有文章</a>
           <dl class="layui-nav-child">
-            <dd><a href="/article/showAllArt.shtml" target="right">技术文章</a></dd>
+            <dd><a href="artiles.jsp" target="right">技术文章</a></dd>
             <dd><a href="diaries.jsp" target="right">日记</a></dd>
              <dd><a href="edit.jsp" target="right">发布文章</a></dd>
           </dl>
@@ -56,7 +56,7 @@
         <li class="layui-nav-item">
           <a href="javascript:;">用户管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="/admin/showUser.shtml" target="right">查看用户</a></dd>
+            <dd><a href="userlist.jsp" target="right">查看用户</a></dd>
             <dd><a href="comments.jsp" target="right">评论管理</a></dd>
           </dl>
         </li>

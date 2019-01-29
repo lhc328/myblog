@@ -44,25 +44,28 @@ public class ArticleController {
     }
 
     @RequestMapping("/showSomeArt")
-    public String showSomeArticle(String art_title, Integer art_permission, String art_type, Model model){
+    @ResponseBody
+    public Map showSomeArticle(String art_title, Integer art_permission, String art_type, int page, int limit){
         List<Article> articles = new ArrayList<Article>();
-        articles = articleService.showSomeArticle(art_title, art_permission, art_type);
-        System.out.println(articles);
-        model.addAttribute("articlelist", articles);
-        return "../pages/artiles.jsp";
+        articles = articleService.showSomeArticle(art_title, art_permission, art_type, page, limit);
+        Map map = new HashMap();
+        map.put("code", 0);
+        map.put("msg", "");
+        map.put("count", 10);
+        map.put("data",articles);
+        return map;
     }
 
     @RequestMapping("/modifyArtPer")
-    public String modifyArtPermission(Long art_id, Integer art_permission){
+    @ResponseBody
+    public Map modifyArtPermission(Long art_id, Integer art_permission){
         System.out.println(art_id+"000"+art_permission);
-        if(articleService.updateArtPer(art_id, art_permission) > 0){
-            return "/article/showAllArt.shtml";
-        }else{
-            return "/article/showAllArt.shtml";
-        }
+        int state = articleService.updateArtPer(art_id, art_permission);
+        Map map = new HashMap();
+        map.put("state", state);
+        return map;
     }
 
-    //首页
     //首页
     @RequestMapping("/index")
     public String indexDo(Model model){
@@ -87,12 +90,6 @@ public class ArticleController {
         return result;
     }
 
-    //总页数
-    @RequestMapping("/totalPage")
-    public void pageCount(HttpSession session){
-        session.setAttribute("totalPage",articleService.getArtCount());
-        return;
-    }
 
     @RequestMapping("/readArticle")
     public String readArticle(Long art_id, Model model){
