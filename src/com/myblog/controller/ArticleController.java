@@ -95,11 +95,13 @@ public class ArticleController {
     public String readArticle(Long art_id, Model model){
         Article article = new Article();
         article = articleService.showArticleById(art_id);
+        articleService.artViewer(art_id);
         if(article != null){
             model.addAttribute("article", article);
             return "../content.jsp";
         }else{
-            return "../index.jsp";
+            return "redirect:../index.jsp";
         }
     }
+
 }

@@ -34,7 +34,7 @@
     </select>
 
     <select id="showArticleById" resultType="com.myblog.entity.Article">
-        select <include refid="aArticle" /> from articles natural join users where art_id = #{art_id}
+        select <include refid="aArticle" /> from articles natural join users where art_id = #{art_id} and art_permission = 2
     </select>
 
     <update id="updateArtPer" parameterType="Map">
@@ -48,4 +48,8 @@
     <select id="showArtLimit" resultType="com.myblog.entity.Article" parameterType="Map">
         select art_id, art_title, art_time, art_info, art_url, art_viewers, art_comments, art_likes from articles where art_permission = 2 order by art_id desc limit #{index},#{count};
     </select>
+
+    <update id="artViewer" parameterType="Long">
+        update articles set art_viewers = art_viewers + 1 where art_id = #{art_id}
+    </update>
 </mapper>

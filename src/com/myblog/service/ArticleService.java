@@ -20,4 +20,7 @@ public interface ArticleService {
     int getArtCount();
 
     List<Article> showArtLimit(int index);
+
+    //阅读量
+    int artViewer(Long art_id);
 }

@@ -22,10 +22,7 @@
 
 <header>
   <ul class="layui-nav">
-    <li class="layui-nav-item" style="margin-left:20%"><a href="">首页</a></li>
-    <li class="layui-nav-item"><a href="">技术分享</a></li>
-    <li class="layui-nav-item"><a href="">日记</a></li>
-    <li class="layui-nav-item"><a href="">文件下载</a></li>
+    <li class="layui-nav-item" style="margin-left:20%"><a href="index.jsp">首页</a></li>
     <li class="layui-nav-item" style="float:right; margin-right:20%" >
       <%
         if(session.getAttribute("user")!=null){
@@ -42,21 +39,21 @@
 </header>
 
 <div style="background-color: #f5f5f5">
-  <div class="layui-row"  style="width: 60%;margin: 0 auto;padding: 2em 0 2em; ">
-      <div class='layui-col-xs12 layui-col-md8' >
+  <div class="layui-row"  style="width: 70%;margin: 0 auto;padding: 2em 0 2em; ">
+      <div class='layui-col-xs12 layui-col-md9' >
           <div class='grid-demo grid-demo-bg1' id="art_list">
           </div>
           <div id="demo1" style="margin: 10px 0 10px 20px;">
           </div>
     </div>
-    <div class="layui-col-xs12 layui-col-md4">
+    <div class="layui-col-xs12 layui-col-md3">
       <div class="grid-demo grid-demo-bg1" style="text-align: center;">
         <div style="height: 400px; background-color: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.1); margin: 10px 0px 10px 10px; ">
           分类
           <hr>
         </div>
         <div style="height: 350px; background-color: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.1); margin: 10px 0px 10px 10px;">
-          热文
+          近期文章
           <hr>
         </div>
       </div>
@@ -114,7 +111,7 @@
     function showList(data){
         var row = "";
         for(var i=0;i<data.length;i++){
-            row = row + "<div style='height: 250px; background-color: white;margin: 10px 10px; box-shadow: 0 1px 2px rgba(0,0,0,.1);'>" + "<div class='layui-col-md3' style='width: 35%;height: 190px;margin: 10px 5px'><div class='grid-demo grid-demo-bg1' >"+"<img src='" + data[i]['art_url'] + "' style='width:100%'></div></div>" + "<div class='layui-col-md9' style='width: 60%;height: 190px;margin: 10px 5px 10px 0'><div class='grid-demo grid-demo-bg2'>" + "<header><h2>" + data[i]['art_title'] + "</h2></header><div style='word-wrap:break-word'>" + data[i]['art_info'] + " </div> </div> </div><hr>" + "<div class='layui-col-md12' style='height: 30px'><div class='grid-demo grid-demo-bg3' style='margin-left: 5px;'>" + "<span> <a style='margin: 0 2px'>" + data[i]['art_time'] + "</a> <a style='margin: 0 2px'>" + data[i]['art_comments'] + "条评论</a> <a style='margin: 0 2px'>" + data[i]['art_viewers'] + " 次阅读</a> <a style='margin: 0 2px'>" + data[i]['art_likes'] + "点赞</a> </span>" + "<span style='float: right;'><a href='/article/readArticle.shtml?art_id=" + data[i]['art_id'] + "' style='margin-right:15px'>阅读全文</a></span> </div> </div> </div>";
+            row = row + "<div style='height: 250px; background-color: white;margin: 10px 10px; box-shadow: 0 1px 2px rgba(0,0,0,.1);'>" + "<div class='layui-col-md3' style='width: 40%;height: 70%;margin: 10px 5px'><div class='grid-demo grid-demo-bg1'>"+"<img src='" + data[i]['art_url'] + "' style='width:240px; height:200px'></div></div>" + "<div class='layui-col-md9' style='width: 55%;height: 190px;margin: 10px 5px 10px 0'><div class='grid-demo grid-demo-bg2'>" + "<header><h2>" + data[i]['art_title'] + "</h2></header><div style='word-wrap:break-word'>" + data[i]['art_info'] + " </div> </div> </div><hr>" + "<div class='layui-col-md12' style='height: 30px'><div class='grid-demo grid-demo-bg3' style='margin-left: 5px;'>" + "<span> <a style='margin: 0 2px'>" + data[i]['art_time'] + "</a> <a style='margin: 0 2px'>" + data[i]['art_comments'] + "条评论</a> <a style='margin: 0 2px'>" + data[i]['art_viewers'] + " 次阅读</a>" + "</span><span style='float: right;'><a href='/article/readArticle.shtml?art_id=" + data[i]['art_id'] + "' style='margin-right:15px'>阅读全文</a></span> </div> </div> </div>";
         }
         $("#art_list").html(row);
     }

@@ -27,10 +27,7 @@
  
 <header>
 <ul class="layui-nav">
-  <li class="layui-nav-item" style="margin-left:20%"><a href="">首页</a></li>
-  <li class="layui-nav-item"><a href="">技术分享</a></li>
-  <li class="layui-nav-item"><a href="">日记</a></li>
-  <li class="layui-nav-item"><a href="">文件下载</a></li>
+  <li class="layui-nav-item" style="margin-left:20%"><a href="../index.jsp">首页</a></li>
     <li class="layui-nav-item" style="float:right; margin-right:20%" >
         <%
             if(session.getAttribute("user")!=null){
@@ -45,7 +42,7 @@
 </header>
 
 <div style="background-color: #f5f5f5">
-<div class="layui-row"  style="width: 70%;margin: 0 auto;padding: 2em 0 2em; ">
+<div class="layui-row"  style="width: 80%;margin: 0 auto;padding: 2em 0 2em; ">
     <div class="layui-col-xs12 layui-col-md8" style="margin-right: 4%;">
       <div class="grid-demo grid-demo-bg1">
           <%
@@ -53,7 +50,9 @@
                 Article article = (Article)request.getAttribute("article");
                 out.print("<div id='my-editormd' >");
                 out.print("<textarea>" + article.getContent() + "</textarea>");
-                out.print("</div>");
+                out.print("</div><div style='background: #ffffff; margin-right: -40px'><span>阅读量："+article.getArt_viewers()+"</span>");
+
+                out.print("<span style='float: right; padding-right: 20px'>作者：" + article.getUser_name() + "</span></div>");
             }else{
                 out.print("<h2>null</h2>");
             }
@@ -68,7 +67,7 @@
           <hr>
         </div>
         <div style="height: 350px; background-color: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.1); margin: 10px 0px 10px 10px;">
-          热文
+          近期文章
           <hr>
         </div>
       </div>

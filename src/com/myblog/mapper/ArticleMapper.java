@@ -23,4 +23,6 @@ public interface ArticleMapper {
     int getArtCount();
 
     List<Article> showArtLimit(Map<String,Object> map);
+
+    int artViewer(Long art_id);
 }

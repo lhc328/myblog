@@ -62,4 +62,9 @@ public class ArticleServiceImpl implements ArticleService {
         map.put("count", count);
         return articleMapper.showArtLimit(map);
     }
+
+    //阅读量
+    public int artViewer(Long art_id){
+        return  articleMapper.artViewer(art_id);
+    }
 }
