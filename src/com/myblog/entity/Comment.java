@@ -6,25 +6,33 @@ public class Comment {
     private String com_info;
     private String com_time;
     private Integer com_permission;
-    private String com_username;
-    private Long com_user_id;
-    private Long com_art_id;
-    private String com_title;
+    private String user_name;
+    private Long user_id;
+    private Long art_id;
     private Long com_fa_id;
+    private String art_title;
 
     public Comment() {
     }
 
-    public Comment(Long com_id, String com_info, String com_time, Integer com_permission, String com_username, Long com_user_id, Long com_art_id, String com_title, Long com_fa_id) {
+    public Comment(Long com_id, String com_info, String com_time, Integer com_permission, String user_name, Long user_id, Long art_id, Long com_fa_id, String art_title) {
         this.com_id = com_id;
         this.com_info = com_info;
         this.com_time = com_time;
         this.com_permission = com_permission;
-        this.com_username = com_username;
-        this.com_user_id = com_user_id;
-        this.com_art_id = com_art_id;
-        this.com_title = com_title;
+        this.user_name = user_name;
+        this.user_id = user_id;
+        this.art_id = art_id;
         this.com_fa_id = com_fa_id;
+        this.art_title = art_title;
+    }
+
+    public String getArt_title() {
+        return art_title;
+    }
+
+    public void setArt_title(String art_title) {
+        this.art_title = art_title;
     }
 
     public Long getCom_id() {
@@ -59,36 +67,28 @@ public class Comment {
         this.com_permission = com_permission;
     }
 
-    public String getCom_username() {
-        return com_username;
+    public String getUser_name() {
+        return user_name;
     }
 
-    public void setCom_username(String com_username) {
-        this.com_username = com_username;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
-    public Long getCom_user_id() {
-        return com_user_id;
+    public Long getUser_id() {
+        return user_id;
     }
 
-    public void setCom_user_id(Long com_user_id) {
-        this.com_user_id = com_user_id;
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
-    public Long getCom_art_id() {
-        return com_art_id;
+    public Long getArt_id() {
+        return art_id;
     }
 
-    public void setCom_art_id(Long com_art_id) {
-        this.com_art_id = com_art_id;
-    }
-
-    public String getCom_title() {
-        return com_title;
-    }
-
-    public void setCom_title(String com_title) {
-        this.com_title = com_title;
+    public void setArt_id(Long art_id) {
+        this.art_id = art_id;
     }
 
     public Long getCom_fa_id() {

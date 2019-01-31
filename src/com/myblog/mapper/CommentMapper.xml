@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.myblog.mapper.CommentMapper">
+    <sql id="aComment">
+        com_id, com_info, com_time, user_id, user_name, art_id, com_permission, com_fa_id, art_title
+    </sql>
+    <select id="showCommentByArt" parameterType="Long" resultType="com.myblog.entity.Comment">
+        select <include refid="aComment" /> from comments natural join articles natural join users where art_permission = 2 and art_id = #{art_id}
+    </select>
+
+    <select id="selectAllComment" parameterType="Map" resultType="com.myblog.entity.Comment">
+        select <include refid="aComment" /> from comments natural join articles natural join users
+        <where>
+            <if test="user_name != null">
+                user_name = #{user_name}
+            </if>
+            <if test="art_title != null">
+                art_title = #{art_title}
+            </if>
+            <if test="com_permission != null">
+                com_permission = #{com_permission}
+            </if>
+        </where>
+        limit #{index},#{limit}
+    </select>
+
+    <select id="selectCommentCount" parameterType="Map" resultType="Integer">
+        select count(*) from comments natural join articles natural join users
+        <where>
+            <if test="user_name != null">
+                user_name = #{user_name}
+            </if>
+            <if test="art_title != null">
+                art_title = #{art_title}
+            </if>
+            <if test="com_permission != null">
+                com_permission = #{com_permission}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insertComment" parameterType="Map">
+        insert into comments (com_info, user_id, art_id, com_fa_id) values (#{com_info}, #{user_id}, #{art_id}, #{com_fa_id})
+    </insert>
+</mapper>

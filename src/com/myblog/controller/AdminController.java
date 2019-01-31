@@ -1,7 +1,9 @@
 package com.myblog.controller;
 
 
+import com.myblog.entity.Comment;
 import com.myblog.entity.User;
+import com.myblog.service.CommentService;
 import com.myblog.service.UserService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private CommentService commentService;
 
     @RequestMapping("showUser")
     public String showUser(Model model){
@@ -75,6 +79,20 @@ public class AdminController {
         int state = userService.deleteUser(user_id);
         Map map = new HashMap();
         map.put("state", state);
+        return map;
+    }
+
+    @RequestMapping("/selectComment")
+    @ResponseBody
+    public Map selectComment(String user_name, String art_title, Integer com_permission, int page, int limit){
+        List<Comment> comments = new ArrayList<Comment>();
+        comments = commentService.selectAllComment(user_name, art_title, com_permission, page, limit);
+        int count = commentService.selectCommentCount(user_name, art_title, com_permission);
+        Map map = new HashMap();
+        map.put("code", 0);
+        map.put("msg", "");
+        map.put("count", count);
+        map.put("data",comments);
         return map;
     }
 }
