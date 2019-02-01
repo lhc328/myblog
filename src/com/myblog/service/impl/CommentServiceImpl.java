@@ -46,4 +46,8 @@ public class CommentServiceImpl implements CommentService {
         map.put("com_fa_id", com_fa_id);
         return commentMapper.insertComment(map);
     }
+
+    public int operateComment(int com_permission, Long com_id){
+        return commentMapper.operateComment(com_permission, com_id);
+    }
 }

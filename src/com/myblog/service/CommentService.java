@@ -17,4 +17,7 @@ public interface CommentService {
 
     //添加评论
     int insertComment(String com_info, Long user_id, Long art_id, Long com_fa_id);
+
+    //操作评论
+    int operateComment(int com_permission, Long com_id);
 }

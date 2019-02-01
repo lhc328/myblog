@@ -95,4 +95,13 @@ public class AdminController {
         map.put("data",comments);
         return map;
     }
+
+    @RequestMapping("/operateComment")
+    @ResponseBody
+    public Map operateComment(int com_permission, Long com_id){
+        Map map = new HashMap();
+        int state = commentService.operateComment(com_permission, com_id);
+        map.put("state", state);
+        return map;
+    }
 }

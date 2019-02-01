@@ -12,4 +12,7 @@ public interface CommentMapper {
     int selectCommentCount(Map map);
 
     int insertComment(Map map);
+
+    //操作评论
+    int operateComment(int com_permission ,Long com_id);
 }
