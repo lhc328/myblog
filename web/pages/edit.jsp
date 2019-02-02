@@ -42,10 +42,15 @@
             width: "90%",
             height: 640,
             syncScrolling: "single",
-            path: "../editormd/lib/",   //你的path路径（原资源文件中lib包在我们项目中所放的位置）
-            theme: "dark",//工具栏主题
+            path: "<%=request.getContextPath()%>/editormd/lib/",   //你的path路径（原资源文件中lib包在我们项目中所放的位置）
+            theme: "gray",//工具栏主题
             previewTheme: "dark",//预览主题
-            editorTheme: "pastel-on-dark",//编辑主题
+            editorTheme: "pastel-on-dark",
+
+            imageUpload : true,
+            imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL : "/upload/mdfileUpload.shtml",
+
             saveHTMLToTextarea: true,
             emoji: false,
             taskList: true,
@@ -53,9 +58,9 @@
             tex: true,                   // 开启科学公式TeX语言支持，默认关闭
             flowChart: true,             // 开启流程图支持，默认关闭
             sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
-            toolbarIcons : function() {  //自定义工具栏，后面有详细介绍
-                return editormd.toolbarModes['simple']; // full, simple, mini
-            },
+            // toolbarIcons : function() {  //自定义工具栏，后面有详细介绍
+            //     return editormd.toolbarModes['simple']; // full, simple, mini
+            // },
         });
     });
     // document.getElementById("content").value = testEditor.getMarkdown();
