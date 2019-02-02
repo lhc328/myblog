@@ -21,7 +21,7 @@
         table.render({
             elem: '#demo'
             , height: 512
-            , limit: 1
+            , limit: 10
             , url: '/admin/selectComment.shtml'
             , request: {
                 pageName: 'page'
