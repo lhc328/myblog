@@ -22,8 +22,8 @@
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-left">
       <li class="layui-nav-item"><a href="">首页</a></li>
-      <li class="layui-nav-item"><a href="artiles.jsp" target="right">文章管理</a></li>
-      <li class="layui-nav-item"><a href="userlist.jsp" target="right">用户管理</a></li>
+      <li class="layui-nav-item"><a href="../WEB-INF/testPages/artiles.jsp" target="right">文章管理</a></li>
+      <li class="layui-nav-item"><a href="../WEB-INF/testPages/userlist.jsp" target="right">用户管理</a></li>
     </ul>
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
@@ -48,16 +48,16 @@
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">所有文章</a>
           <dl class="layui-nav-child">
-            <dd><a href="artiles.jsp" target="right">技术文章</a></dd>
+            <dd><a href="/admin/toArt.shtml" target="right">技术文章</a></dd>
             <dd><a href="diaries.jsp" target="right">日记</a></dd>
-             <dd><a href="edit.jsp" target="right">发布文章</a></dd>
+             <dd><a href="/admin/toEdit.shtml" target="right">发布文章</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">用户管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="userlist.jsp" target="right">查看用户</a></dd>
-            <dd><a href="comments.jsp" target="right">评论管理</a></dd>
+            <dd><a href="/admin/toUser.shtml" target="right">查看用户</a></dd>
+            <dd><a href="/admin/toCom.shtml" target="right">评论管理</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item"><a href="">文件管理</a></li>

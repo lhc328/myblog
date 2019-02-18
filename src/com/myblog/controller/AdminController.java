@@ -35,6 +35,27 @@ public class AdminController {
         return "../pages/userlist.jsp";
     }
 
+    //admin后台操作必须通过转发才能到达web-inf
+    @RequestMapping("toArt")
+    public String toArt(){
+        return "/WEB-INF/testPages/artiles.jsp";
+    }
+
+    @RequestMapping("toCom")
+    public String toCom(){
+        return "/WEB-INF/testPages/comments.jsp";
+    }
+
+    @RequestMapping("toUser")
+    public String toUser(){
+        return "/WEB-INF/testPages/userlist.jsp";
+    }
+
+    @RequestMapping("toEdit")
+    public String toEdit(){
+        return "/WEB-INF/testPages/edit.jsp";
+    }
+
     @RequestMapping("showUser1")
     @ResponseBody
     public Map showUser1(int page, int limit, String user_name, Integer permission){

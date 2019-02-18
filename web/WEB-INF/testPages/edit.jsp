@@ -6,10 +6,10 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="../layui/css/layui.css" media="all">
-    <link rel="stylesheet"href="../editormd/css/editormd.css" />
-    <script src="../js/jquery.min.js"></script>
-    <script src="../editormd/editormd.min.js"></script>
+    <link rel="stylesheet" href="../../layui/css/layui.css" media="all">
+    <link rel="stylesheet"href="../../editormd/css/editormd.css" />
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../editormd/editormd.min.js"></script>
 </head>
 <body style="background-color: #f3f2ee">
 
@@ -65,7 +65,7 @@
     });
     // document.getElementById("content").value = testEditor.getMarkdown();
 </script>
-<script src="../layui/layui.js" charset="utf-8"></script>
+<script src="../../layui/layui.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
     layui.use('upload', function(){

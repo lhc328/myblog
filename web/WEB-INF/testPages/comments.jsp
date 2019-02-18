@@ -3,13 +3,13 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="../css/hclam.css">
-    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../../css/hclam.css">
+    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
 </head>
 <body>
 <table id="demo" lay-filter="test"></table>
 
-<script src="../layui/layui.js" charset="utf-8"></script>
+<script src="../../layui/layui.js" charset="utf-8"></script>
 <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="commit">通过</a>
