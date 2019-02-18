@@ -61,7 +61,7 @@
         <div class="layui-row" style="width: 80%;margin: 0 auto;padding: 2em 0 2em; ">
             <div class="layui-col-xs12 layui-col-md8" style="margin-right: 4%;">
                 <div class="grid-demo grid-demo-bg1">
-                    <from class="layui-form layui-form-pane" action="">
+                    <form class="layui-form layui-form-pane" action="">
                         <div class="layui-form-item layui-form-text">
                             <label class="layui-form-label">文本域</label>
                             <div class="layui-input-block">
@@ -71,7 +71,7 @@
                         <div class="layui-form-item">
                             <button class="layui-btn" id="btn" lay-submit="" lay-filter="demo1">发表评论</button>
                         </div>
-                    </from>
+                    </form>
                     <div>
                         <ul id="comment-list">
 
@@ -81,14 +81,13 @@
             </div>
         </div>
     </div>
-        
     <div class="layui-col-xs12 layui-col-md3">
       <div class="grid-demo grid-demo-bg1" style="text-align: center;">
-        <div style="height: 400px; background-color: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.1); margin: 10px 0px 10px 10px; ">
+        <div style="height: 400px; background-color: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.1); margin: 10px 0 10px 10px; ">
           分类
           <hr>
         </div>
-        <div style="height: 350px; background-color: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.1); margin: 10px 0px 10px 10px;">
+        <div style="height: 350px; background-color: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.1); margin: 10px 0 10px 10px;">
           近期文章
           <hr>
         </div>
@@ -172,24 +171,29 @@ layui.use('layer', function(){ //独立版的layer无需执行这一句
         getComment();
         $("#btn").click(function () {
             alert($("#com_info").val());
-            $.ajax({
-                type: 'POST',
-                url: '/comment/insertComment.shtml',
-                data:{
-                    com_info: $("#com_info").val(),
-                    <%--user_id: <%=((User)session.getAttribute("user")).getUser_id() %>,--%>
-                    <%--art_id: <%=((Article)request.getAttribute("article")).getArt_id() %>,--%>
-                    user_id: 1,
-                    art_id: 6,
-                    com_fa_id: 0
-                },
-                datatype: 'json',
-                success: function (data) {
-                    console.log(data);
-                    console.log(data.msg);
-                    getComment();
-                }
-            })
+                $.ajax({
+                    type: 'POST',
+                    url: '/comment/insertComment.shtml',
+                    data: {
+                        com_info: $("#com_info").val(),
+                        user_id: <%
+                                if(session.getAttribute("user")!=null){
+                                    out.print(((User)session.getAttribute("user")).getUser_id());
+                                }else{
+                                    out.print("2");
+                                }
+                        %>,
+                        art_id: <%=((Article)request.getAttribute("article")).getArt_id() %>,
+                        com_fa_id: 0
+                    },
+                    datatype: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        console.log(data.msg);
+                        getComment();
+                    }
+                })
+
         })
     });
 
@@ -199,7 +203,7 @@ layui.use('layer', function(){ //独立版的layer无需执行这一句
             url: "/comment/showComment.shtml",
             async: false,
             data: {
-                art_id: 6
+                art_id: <%=((Article)request.getAttribute("article")).getArt_id() %>
             },
             dataType: 'json',
             success: function (data) {
