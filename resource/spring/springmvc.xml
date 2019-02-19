@@ -39,15 +39,15 @@
     <!--定时器-->
 
     <!--配置拦截器 只拦controller-->
-    <!--<mvc:interceptors>-->
-        <!--<mvc:interceptor>-->
-            <!--&lt;!&ndash;拦截什么&ndash;&gt;-->
-            <!--<mvc:mapping path="/admin/**"/>-->
-            <!--&lt;!&ndash;不拦截什么&ndash;&gt;-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--拦截什么-->
+            <mvc:mapping path="/admin/**"/>
+            <!--不拦截什么-->
 
-            <!--<bean id="interceptor" class="com.myblog.interceptiors.Interceptor"></bean>-->
-        <!--</mvc:interceptor>-->
-    <!--</mvc:interceptors>-->
+            <bean id="interceptor" class="com.myblog.interceptiors.Interceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 
 </beans>

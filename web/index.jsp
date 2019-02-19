@@ -154,7 +154,7 @@
                             ,target: '_self'
                         });
                         btn.find('.layui-layer-btn1').attr({
-                            href: '<%=request.getContextPath()%>/pages/admin.jsp'
+                            href: ''
                             ,target: '_self'
                         });
                     }

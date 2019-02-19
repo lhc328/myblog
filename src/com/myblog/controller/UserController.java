@@ -48,4 +48,15 @@ public class UserController {
             return "redirect:/index.jsp";
         }
     }
+
+    //后台登录
+    @RequestMapping("/adminlogin")
+    public String adminlogin(String user_name, String password, HttpSession session){
+        User user = userService.loginByName(user_name, password);
+        if(user != null && user.getPermission()==1) {          //为null时不能存进session
+            session.setAttribute("user", user);
+            return "/WEB-INF/testPages/admin.jsp";
+        }
+        return "redirect:/index.jsp";
+    }
 }

@@ -13,7 +13,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="format-detection" content="telephone=no">
   
-  <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="../../layui/css/layui.css" media="all">
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -22,8 +22,8 @@
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-left">
       <li class="layui-nav-item"><a href="">首页</a></li>
-      <li class="layui-nav-item"><a href="../WEB-INF/testPages/artiles.jsp" target="right">文章管理</a></li>
-      <li class="layui-nav-item"><a href="../WEB-INF/testPages/userlist.jsp" target="right">用户管理</a></li>
+      <li class="layui-nav-item"><a href="artiles.jsp" target="right">文章管理</a></li>
+      <li class="layui-nav-item"><a href="userlist.jsp" target="right">用户管理</a></li>
     </ul>
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
@@ -49,7 +49,7 @@
           <a class="" href="javascript:;">所有文章</a>
           <dl class="layui-nav-child">
             <dd><a href="/admin/toArt.shtml" target="right">技术文章</a></dd>
-            <dd><a href="diaries.jsp" target="right">日记</a></dd>
+            <dd><a href="../../pages/diaries.jsp" target="right">日记</a></dd>
              <dd><a href="/admin/toEdit.shtml" target="right">发布文章</a></dd>
           </dl>
         </li>
@@ -77,7 +77,7 @@
     © layui.com - 底部固定区域
   </div>
 </div>
-<script src="../layui/layui.js" charset="utf-8"></script>
+<script src="../../layui/layui.js" charset="utf-8"></script>
 <script>
 //JavaScript代码区域
 layui.use('element', function(){
