@@ -58,15 +58,36 @@
             }
           %>
       </div>
+        <div class="layui-row" style="width: 80%;margin: 0 auto;padding: 2em 0 2em; ">
+            <div class="layui-col-xs12 layui-col-md8" style="margin-right: 4%;">
+                <div class="grid-demo grid-demo-bg1">
+                    <form class="layui-form layui-form-pane" action="">
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">文本域</label>
+                            <div class="layui-input-block">
+                                <textarea id="com_info" placeholder="请输入内容" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <button class="layui-btn" id="btn" lay-submit="" lay-filter="demo1">发表评论</button>
+                        </div>
+                    </form>
+                    <div>
+                        <ul id="comment-list">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-        
     <div class="layui-col-xs12 layui-col-md3">
       <div class="grid-demo grid-demo-bg1" style="text-align: center;">
-        <div style="height: 400px; background-color: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.1); margin: 10px 0px 10px 10px; ">
+        <div style="height: 400px; background-color: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.1); margin: 10px 0 10px 10px; ">
           分类
           <hr>
         </div>
-        <div style="height: 350px; background-color: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.1); margin: 10px 0px 10px 10px;">
+        <div style="height: 350px; background-color: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.1); margin: 10px 0 10px 10px;">
           近期文章
           <hr>
         </div>
@@ -142,6 +163,70 @@ layui.use('layer', function(){ //独立版的layer无需执行这一句
   });
   
 });
+</script>
+
+<script src="<%=request.getContextPath()%>/js/jquery.js" charset="utf-8"></script>
+<script>
+    $(document).ready(function () {
+        getComment();
+        $("#btn").click(function () {
+            alert($("#com_info").val());
+                $.ajax({
+                    type: 'POST',
+                    url: '/comment/insertComment.shtml',
+                    data: {
+                        com_info: $("#com_info").val(),
+                        user_id: <%
+                                if(session.getAttribute("user")!=null){
+                                    out.print(((User)session.getAttribute("user")).getUser_id());
+                                }else{
+                                    out.print("2");
+                                }
+                        %>,
+                        art_id: <%=((Article)request.getAttribute("article")).getArt_id() %>,
+                        com_fa_id: 0
+                    },
+                    datatype: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        console.log(data.msg);
+                        getComment();
+                    }
+                })
+
+        })
+    });
+
+    function getComment() {
+        $.ajax({
+            type: 'POST',
+            url: "/comment/showComment.shtml",
+            async: false,
+            data: {
+                art_id: <%=((Article)request.getAttribute("article")).getArt_id() %>
+            },
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                showList(data.commentlist);
+            }
+        });
+    };
+
+    function showList(data) {
+        var row = "";
+        for(var i=0;i<data.length;i++){
+            if(data[i]['com_fa_id'] == 0){
+                row = row + "<h2>" + data[i]['user_name'] + "</h2>" + "<p>" + data[i]['com_info'] + "</p>"+"<p>" + data[i]['com_time'] + "</p>";
+                for(var j=i;j<data.length;j++){
+                    if(data[j]['com_fa_id'] == data[i]['com_id']){
+                        row = row + "<div style='margin-left:20px'><h2>" + data[j]['user_name'] + "</h2>" + "<p>" + data[j]['com_info'] + "</p>"+"<p>" + data[j]['com_time'] + "</p></div>";
+                    }
+                }
+            }
+        }
+        $("#comment-list").html(row);
+    }
 </script>
 
 </body>

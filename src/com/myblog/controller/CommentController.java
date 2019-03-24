@@ -22,7 +22,7 @@ public class CommentController {
     @RequestMapping("/insertComment")
     @ResponseBody
     public Map insertComment(String com_info, Long user_id, Long art_id, Long com_fa_id){
-        System.out.println(com_info);
+        System.out.println(com_info +" "+ user_id +" " +art_id);
         int state = commentService.insertComment(com_info, user_id, art_id, com_fa_id);
         Map map = new HashMap();
         map.put("state", state);
