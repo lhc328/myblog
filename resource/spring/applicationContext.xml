@@ -41,4 +41,31 @@
         <property name="basePackage" value="com.myblog.mapper"></property>
     </bean>
 
+    <!-- 配置redis -->
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="${redis.maxIdle}" />
+        <property name="maxWaitMillis" value="${redis.maxWait}" />
+    </bean>
+
+    <bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="poolConfig" ref="poolConfig"/>
+        <property name="port" value="${redis.port}"/>
+        <property name="hostName" value="${redis.host}" />
+       <!-- <property name="password" value="${redis.password}" />-->
+        <property name="timeout" value="${redis.timeout}" />
+    </bean>
+
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate" >
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="keySerializer">
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+        </property>
+        <property name="valueSerializer">
+            <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+        </property>
+    </bean>
+
+    <bean id="redisUtil" class="com.myblog.entity.RedisUtil">
+        <property name="redisTemplate" ref="redisTemplate"/>
+    </bean>
 </beans>

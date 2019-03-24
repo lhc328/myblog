@@ -1,5 +1,6 @@
 package com.myblog.controller;
 
+import com.myblog.entity.RedisUtil;
 import com.myblog.entity.User;
 import com.myblog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private RedisUtil redisUtil;
+
     //登录验证
     @RequestMapping("/login")
     public String loginController(String user_name, String password, Long art_id, HttpSession session){
@@ -19,6 +23,8 @@ public class UserController {
         User user = userService.loginByName(user_name, password);
         if(user != null) {          //为null时不能存进session
             session.setAttribute("user", user);
+            System.out.println(session.getId());
+            redisUtil.set(session.getId(),user.getUser_name());
             if(art_id != null){
                 System.out.println(art_id);
                 return "redirect:/article/readArticle.shtml?art_id="+art_id;
